@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9f8a837999b3f65b232a208cf2127670",
+    "revision": "0ac63a647aad8071a2782219bea75885",
     "url": "/bodhi-calendar-v2/index.html"
   },
   {
