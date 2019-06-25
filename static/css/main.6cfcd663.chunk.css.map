@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACE,oBAAsB,CACtB,0BAA2B,CAC3B,qBACF,CAEA,KACE,wBACF","file":"main.6cfcd663.chunk.css","sourcesContent":[".app {\n  padding: max(2vw, 2vh);\n  font-size: calc(1rem + 1vw);\n  box-sizing: border-box;\n}\n\nhtml {\n  background-color: #fff9ed;\n}"]}
