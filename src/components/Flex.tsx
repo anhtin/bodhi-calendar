@@ -7,6 +7,7 @@ export interface FlexProps {
   alignItems?: 'flex-start' | 'flex-end' | 'center' | 'space-around' | 'space-between';
   children: ReactElement | ReactElement[];
   style?: CSSProperties;
+  className?: string;
 }
 
 const Flex = ({
@@ -16,14 +17,17 @@ const Flex = ({
   alignItems,
   children,
   style,
+  className
 }: FlexProps) => (
-  <div style={{
-    display: 'flex',
-    flexDirection: direction,
-    flex,
-    justifyContent,
-    alignItems,
-    ...style
+  <div
+    className={className}
+    style={{
+      display: 'flex',
+      flexDirection: direction,
+      flex,
+      justifyContent,
+      alignItems,
+      ...style
   }}>
     {children}
   </div>

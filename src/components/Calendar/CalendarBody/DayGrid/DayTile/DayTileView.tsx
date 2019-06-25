@@ -1,10 +1,11 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { DateTime } from 'luxon';
 import solarLunar from 'solarlunar';
 
 import Flex from 'components/Flex';
 import { VegetarianDayPredicate } from 'utils/types';
-import { colors } from 'utils/theme';
+import { composeCssClasses } from 'utils/helpers';
+import './style.scss';
 
 interface DayTileViewProps {
   today: DateTime;
@@ -26,35 +27,11 @@ export const DayTileView = ({
       isToday={date.hasSame(today, 'day')}
       isVegetarianDay={pred(cDate)}
     >
-      <LunarPart>{cDate.lDay}</LunarPart>
-      <SolarPart isToday={date.hasSame(today, 'day')}>{date.day}</SolarPart>
+      <div className="calendar-tile-lunar-part">{cDate.lDay}</div>
+      <div className="calendar-tile-solar-part">{date.day}</div>
     </Tile>
   );
 };
-
-interface SolarPartProps {
-  isToday: boolean;
-  children: any;
-}
-const SolarPart = ({ children }: SolarPartProps) => (
-  <div style={{
-    transform: 'translate(0, -0.2em)'
-  }}>
-    {children}
-  </div>
-);
-
-interface LunarPartProps {
-  children: number;
-}
-const LunarPart = ({ children }: LunarPartProps) => (
-  <small style={{
-    fontSize: '0.5em',
-    transform: 'translate(0, 0.5em)'
-  }}>
-    {children}
-  </small>
-);
 
 interface TileProps {
   isToday: boolean;
@@ -62,35 +39,18 @@ interface TileProps {
   isMonth: boolean;
   children: ReactElement | ReactElement[];
 }
-const Tile = ({ isToday, isVegetarianDay, isMonth, children }: TileProps) => {
-  const style = {
-    width: '2em',
-    height: '2em',
-    ...(isMonth ? null : notMonthStyle),
-    ...(isToday ? todayStyle : null),
-    ...(isVegetarianDay ? vegetarianStyle : null),
-  };
-  return (
-    <Flex
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-      style={style}
-    >
-      {children}
-    </Flex>
-  );
-}
-
-const vegetarianStyle: CSSProperties = {
-  fontWeight: 'bold',
-  color: colors.GREEN,
-};
-const todayStyle: CSSProperties = {
-  fontWeight: 'bold',
-  borderRadius: '500%',
-  backgroundColor: colors.BROWN,
-};
-const notMonthStyle: CSSProperties = {
-  opacity: 0.5,
-};
+const Tile = ({ isToday, isVegetarianDay, isMonth, children }: TileProps) => (
+  <Flex
+    className={composeCssClasses([
+      'calendar-tile',
+      isMonth ? null : 'calendar-tile-discrete',
+      isToday ? 'calendar-tile-today' : null,
+      isVegetarianDay ? 'calendar-tile-vegetarian' : null,
+    ])}
+    direction="column"
+    justifyContent="center"
+    alignItems="center"
+  >
+    {children}
+  </Flex>
+);

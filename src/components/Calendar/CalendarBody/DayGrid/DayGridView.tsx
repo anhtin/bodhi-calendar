@@ -5,6 +5,8 @@ import DayTile from './DayTile';
 import Flex from 'components/Flex';
 import { VegetarianDayPredicate } from 'utils/types';
 
+import './style.scss';
+
 interface DayGridViewProps {
   currentDate: DateTime;
   displayDate: DateTime;
@@ -18,7 +20,7 @@ export const DayGridView = ({
 }: DayGridViewProps) => {
   const grid = computeDateGrid(displayDate);
   return (
-    <div>
+    <div className="day-grid">
       {grid.map((row, i) => (
         <Flex key={i} justifyContent="space-around">
           {row.map((col, j) => (

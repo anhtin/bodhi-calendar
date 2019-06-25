@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+// Colors
+$c-brown: #8f6e64;
+$c-green: #a1b182;
+$c-grey-light: #f6f6ff;
+$c-yellow-light: #fff9ed;
+
+// Update global variables used by Bulma
+$primary: $c-brown;
+$link: $c-brown;
+$body-background-color: $c-yellow-light;
+
+@import "~bulma/bulma.sass";

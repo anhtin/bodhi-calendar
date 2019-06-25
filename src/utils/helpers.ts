@@ -8,3 +8,7 @@ export function findScheduleByName(
     schedule.name === name
   );
 }
+
+export function composeCssClasses(classes: (string | null)[]): string {
+  return classes.filter((cls): boolean => cls !== null).join(' ');
+}

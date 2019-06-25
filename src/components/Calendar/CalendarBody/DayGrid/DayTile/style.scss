@@ -1,0 +1,30 @@
+@import 'assets/sass/main.scss';
+
+.calendar-tile {
+  width: 2em;
+  height: 2em;
+}
+
+.calendar-tile-vegetarian {
+  font-weight: bold;
+  color: $c-green;
+}
+
+.calendar-tile-today {
+  font-weight: bold;
+  border-radius: 500%;
+  background-color: $c-brown;
+}
+
+.calendar-tile-discrete {
+  opacity: 0.5,
+}
+
+.calendar-tile-solar-part {
+  transform: translate(0, -0.2em);
+}
+
+.calendar-tile-lunar-part {
+  font-size: 0.5em;
+  transform: translate(0, 0.5em);
+}

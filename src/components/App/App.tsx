@@ -1,7 +1,7 @@
 import React from 'react';
-import 'bulma/css/bulma.min.css';
 
 import Calendar from 'components/Calendar';
+import 'assets/sass/main.scss';
 import './App.css';
 
 const App: React.FC = () => {
