@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bodhi-calendar-v2/static/css/main.21f1f725.chunk.css",
-    "main.js": "/bodhi-calendar-v2/static/js/main.01e50983.chunk.js",
-    "main.js.map": "/bodhi-calendar-v2/static/js/main.01e50983.chunk.js.map",
+    "main.css": "/bodhi-calendar-v2/static/css/main.9077fc62.chunk.css",
+    "main.js": "/bodhi-calendar-v2/static/js/main.b9b72f39.chunk.js",
+    "main.js.map": "/bodhi-calendar-v2/static/js/main.b9b72f39.chunk.js.map",
     "runtime~main.js": "/bodhi-calendar-v2/static/js/runtime~main.b71fb365.js",
     "runtime~main.js.map": "/bodhi-calendar-v2/static/js/runtime~main.b71fb365.js.map",
     "static/js/2.8d38264b.chunk.js": "/bodhi-calendar-v2/static/js/2.8d38264b.chunk.js",
     "static/js/2.8d38264b.chunk.js.map": "/bodhi-calendar-v2/static/js/2.8d38264b.chunk.js.map",
     "index.html": "/bodhi-calendar-v2/index.html",
-    "precache-manifest.c4512fdcbb0cafc0f74d4e98eee04939.js": "/bodhi-calendar-v2/precache-manifest.c4512fdcbb0cafc0f74d4e98eee04939.js",
+    "precache-manifest.07ad43f8c0e2acc6deef4f3e05dc643a.js": "/bodhi-calendar-v2/precache-manifest.07ad43f8c0e2acc6deef4f3e05dc643a.js",
     "service-worker.js": "/bodhi-calendar-v2/service-worker.js",
-    "static/css/main.21f1f725.chunk.css.map": "/bodhi-calendar-v2/static/css/main.21f1f725.chunk.css.map"
+    "static/css/main.9077fc62.chunk.css.map": "/bodhi-calendar-v2/static/css/main.9077fc62.chunk.css.map"
   }
 }
