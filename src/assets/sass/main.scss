@@ -6,9 +6,12 @@ $c-green: #a1b182;
 $c-grey-light: #f6f6ff;
 $c-yellow-light: #fff9ed;
 
+$c-primary: $c-brown;
+$c-secondary: $c-green;
+
 // Update global variables used by Bulma
-$primary: $c-brown;
-$link: $c-brown;
+$primary: $c-primary;
+$link: $c-primary;
 $body-background-color: $c-yellow-light;
 
 @import "~bulma/bulma.sass";

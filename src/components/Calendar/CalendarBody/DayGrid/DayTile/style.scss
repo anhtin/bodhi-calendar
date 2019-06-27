@@ -7,13 +7,13 @@
 
 .calendar-tile-vegetarian {
   font-weight: bold;
-  color: $c-green !important;
+  color: $c-secondary;
 }
 
 .calendar-tile-today {
   font-weight: bold;
   border-radius: 500%;
-  background-color: $c-brown;
+  background-color: $c-primary;
 }
 
 .calendar-tile-discrete {
