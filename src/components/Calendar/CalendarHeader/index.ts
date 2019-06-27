@@ -1,3 +1,5 @@
-import { CalendarHeaderView as CalendarHeader } from './CalendarHeaderView';
+import CalendarHeaderView from './CalendarHeaderView';
 
-export default CalendarHeader;
+export {
+  CalendarHeaderView as default,
+};

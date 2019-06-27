@@ -20,7 +20,7 @@ export interface CalendarConfigurationViewProps {
   onUpdate: (newConfig: Configuration) => void;
 }
 
-export const CalendarConfigurationView = ({
+const CalendarConfigurationView = ({
   config,
   visible,
   onHide,
@@ -69,3 +69,5 @@ function newConfigFromSchedule(
   }
   return currentConfig;
 }
+
+export default CalendarConfigurationView;

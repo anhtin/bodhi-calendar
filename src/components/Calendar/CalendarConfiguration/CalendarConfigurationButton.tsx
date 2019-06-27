@@ -6,8 +6,10 @@ export interface CalendarConfigurationButtonProps {
   onClick: () => void;
 }
 
-export const CalendarConfigurationButton = ({
+const CalendarConfigurationButton = ({
   onClick
 }: CalendarConfigurationButtonProps) => (
   <div className="configuration-button" onClick={onClick}>⚙</div>
 );
+
+export default CalendarConfigurationButton;

@@ -1,3 +1,5 @@
-import { DayTileView as DayTile } from './DayTileView';
+import DayTileView from './DayTileView';
 
-export default DayTile
+export {
+  DayTileView as default,
+}

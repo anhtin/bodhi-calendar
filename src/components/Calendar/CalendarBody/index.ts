@@ -1,3 +1,5 @@
-import { CalendarBodyView as CalendarBody } from './CalendarBodyView';
+import CalendarBodyView from './CalendarBodyView';
 
-export default CalendarBody;
+export {
+  CalendarBodyView as default,
+};

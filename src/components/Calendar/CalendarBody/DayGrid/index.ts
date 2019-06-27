@@ -1,3 +1,5 @@
-import { DayGridView as DayGrid } from './DayGridView';
+import DayGridView from './DayGridView';
 
-export default DayGrid;
+export {
+  DayGridView as default,
+};

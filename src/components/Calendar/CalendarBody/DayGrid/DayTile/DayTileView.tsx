@@ -14,7 +14,7 @@ interface DayTileViewProps {
   discrete: boolean;
 };
 
-export const DayTileView = ({
+const DayTileView = ({
   date,
   pred,
   today,
@@ -54,3 +54,5 @@ const Tile = ({ isToday, isVegetarianDay, isMonth, children }: TileProps) => (
     {children}
   </Flex>
 );
+
+export default DayTileView;

@@ -13,7 +13,7 @@ interface DayGridViewProps {
   pred: VegetarianDayPredicate;
 }
 
-export const DayGridView = ({
+const DayGridView = ({
     currentDate,
     displayDate,
     pred,
@@ -52,3 +52,5 @@ function computeDateGrid(date: DateTime): DateTime[][] {
   }
   return weeks;
 }
+
+export default DayGridView;

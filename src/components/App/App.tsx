@@ -4,7 +4,7 @@ import Calendar from 'components/Calendar';
 import 'assets/sass/main.scss';
 import './App.css';
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <div className="app">
       <Calendar />

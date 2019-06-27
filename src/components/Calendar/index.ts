@@ -1,3 +1,7 @@
-import { CalendarView as Calendar } from './CalendarView'
+import CalendarView from './CalendarView';
+import CalendarContainer from './CalendarContainer'
 
-export default Calendar;
+export {
+  CalendarView,
+  CalendarContainer as default,
+};

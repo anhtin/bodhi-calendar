@@ -10,7 +10,7 @@ interface CalendarHeaderViewProps {
   onNextMonth: () => void;
 }
 
-export const CalendarHeaderView = ({
+const CalendarHeaderView = ({
   displayDate,
   onPrevMonth,
   onNextMonth
@@ -28,3 +28,5 @@ export const CalendarHeaderView = ({
     </Flex>
   );
 };
+
+export default CalendarHeaderView;

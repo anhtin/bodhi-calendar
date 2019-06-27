@@ -6,13 +6,13 @@ import Flex from 'components/Flex';
 import { VegetarianDayPredicate } from 'utils/types';
 
 
-interface CalendarBodyViewProps {
+export interface CalendarBodyViewProps {
   currentDate: DateTime;
   displayDate: DateTime;
   pred: VegetarianDayPredicate;
 }
 
-export const CalendarBodyView = (props: CalendarBodyViewProps) => (
+const CalendarBodyView = (props: CalendarBodyViewProps) => (
   <Flex direction="column" justifyContent="space-between">
     <WeekdayRow />
     <DayGrid {...props} />
@@ -26,3 +26,5 @@ const WeekdayRow = () => (
     ))}
   </Flex>
 );
+
+export default CalendarBodyView;
