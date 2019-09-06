@@ -1,7 +1,5 @@
-import CalendarView from './CalendarView';
-import CalendarContainer from './CalendarContainer'
+import Calendar from './Calendar';
 
 export {
-  CalendarView,
-  CalendarContainer as default,
+  Calendar as default,
 };

@@ -1,6 +1,6 @@
 import { SolarLunarDate } from 'solarlunar';
 
-export interface Configuration {
+export interface Settings {
   schedule: VegetarianSchedule;
 }
 
@@ -9,4 +9,4 @@ export interface VegetarianSchedule {
   pred: VegetarianDayPredicate;
 };
 
-export type VegetarianDayPredicate = (date: SolarLunarDate) => boolean;
+type VegetarianDayPredicate = (date: SolarLunarDate) => boolean;

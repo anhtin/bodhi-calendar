@@ -1,20 +1,20 @@
 import React from 'react';
-import { DateTime } from 'luxon';
 import { Button } from 'bloomer';
+import { DateTime } from 'luxon';
 
 import Flex from 'components/Flex';
 
-interface CalendarHeaderViewProps {
+type Props = {
   displayDate: DateTime;
   onPrevMonth: () => void;
   onNextMonth: () => void;
-}
+};
 
-const CalendarHeaderView = ({
+function Header({
   displayDate,
   onPrevMonth,
   onNextMonth
-}: CalendarHeaderViewProps) => {
+}: Props) {
   const month = displayDate.monthLong;
   const year = displayDate.year;
   return (
@@ -29,4 +29,4 @@ const CalendarHeaderView = ({
   );
 };
 
-export default CalendarHeaderView;
+export default Header;

@@ -1,5 +1,6 @@
 import solarLunar, { SolarLunarDate } from 'solarlunar';
-import { VegetarianSchedule } from './types';
+
+import { VegetarianSchedule } from 'types';
 
 function checkMonthlySchedule(
   date: SolarLunarDate,

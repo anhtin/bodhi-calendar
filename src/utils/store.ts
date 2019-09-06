@@ -1,6 +1,7 @@
 import { defaultVegetarianSchedules } from './vegetarian';
-import { VegetarianSchedule } from 'utils/types';
 import { findScheduleByName } from './helpers';
+
+import { VegetarianSchedule } from 'types';
 
 export function getVegetarianSchedule(): VegetarianSchedule {
   if (localStorage) {

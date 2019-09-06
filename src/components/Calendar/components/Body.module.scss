@@ -1,30 +1,34 @@
 @import 'assets/sass/main.scss';
 
-.calendar-tile {
+.dayGrid {
+    padding: 1vh 0;
+}
+
+.calendarTile {
   width: 2em;
   height: 2em;
 }
 
-.calendar-tile-vegetarian {
+.calendarTileVegetarian {
   font-weight: bold;
   color: $c-secondary;
 }
 
-.calendar-tile-today {
+.calendarTileToday {
   font-weight: bold;
   border-radius: 500%;
   background-color: $c-primary;
 }
 
-.calendar-tile-discrete {
+.calendarTileDiscrete {
   opacity: 0.5,
 }
 
-.calendar-tile-solar-part {
+.calendarTileSolarPart {
   transform: translate(0, -0.2em);
 }
 
-.calendar-tile-lunar-part {
+.calendarTileLunarPart {
   font-size: 0.5em;
   transform: translate(0, 0.5em);
 }

@@ -1,5 +1,6 @@
-import { VegetarianSchedule } from 'utils/types';
 import { getVegetarianSchedules } from 'utils/store';
+
+import { VegetarianSchedule } from 'types';
 
 export function findScheduleByName(
   name: string
@@ -9,6 +10,6 @@ export function findScheduleByName(
   );
 }
 
-export function composeCssClasses(classes: (string | null)[]): string {
-  return classes.filter((cls): boolean => cls !== null).join(' ');
+export function composeCssClasses(classes: (string | false)[]): string {
+  return classes.filter((cls): boolean => cls !== false).join(' ');
 }

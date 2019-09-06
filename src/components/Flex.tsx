@@ -1,36 +1,33 @@
-import React, { ReactElement, CSSProperties } from 'react';
+import React, { HTMLProps } from 'react';
 
-export interface FlexProps {
+type Props = {
   direction?: 'row' | 'column';
   flex?: number,
   justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-around' | 'space-between';
   alignItems?: 'flex-start' | 'flex-end' | 'center' | 'space-around' | 'space-between';
-  children: ReactElement | ReactElement[];
-  style?: CSSProperties;
-  className?: string;
-}
+} & HTMLProps<HTMLDivElement>;
 
-const Flex = ({
+function Flex({
   direction,
   flex,
   justifyContent,
   alignItems,
-  children,
   style,
-  className
-}: FlexProps) => (
-  <div
-    className={className}
-    style={{
-      display: 'flex',
-      flexDirection: direction,
-      flex,
-      justifyContent,
-      alignItems,
-      ...style
-  }}>
-    {children}
-  </div>
-)
+  ...htmlProps
+}: Props) {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: direction,
+        flex,
+        justifyContent,
+        alignItems,
+        ...style
+      }}
+      {...htmlProps}
+    />
+  );
+}
 
 export default Flex;

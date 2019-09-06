@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext, createContext, HTMLProps } from 'react';
+import React, { useState, useEffect, createContext, HTMLProps } from 'react';
 import { DateTime } from 'luxon';
 
-const useDate = () => useContext(Date);
-
 const initialDate: DateTime = DateTime.local()
-const Date = createContext(initialDate);
+const DateContext = createContext(initialDate);
 
 export function DateProvider({ children }: HTMLProps<HTMLElement>) {
   const [currentDate, setCurrentDate] = useState(initialDate);
@@ -15,16 +13,18 @@ export function DateProvider({ children }: HTMLProps<HTMLElement>) {
       if (!newDate.hasSame(currentDate, 'day')) {
         setCurrentDate(newDate);
       }
-    });
+    }, 60000);
 
     return () => clearInterval(timer);
   });
 
   return (
-    <Date.Provider value={currentDate}>
+    <DateContext.Provider value={currentDate}>
       {children}
-    </Date.Provider>
+    </DateContext.Provider>
   );
 }
 
-export default useDate;
+export const DateConsumer = DateContext.Consumer;
+
+export default DateContext;
