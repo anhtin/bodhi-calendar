@@ -7,9 +7,9 @@ import { useDate, useSettings } from 'hooks/contexts';
 import { composeCssClasses } from 'utils/helpers';
 import styles from './Body.module.scss';
 
-type CalendarBodyProps = {
+interface CalendarBodyProps {
   displayDate: DateTime;
-};
+}
 
 function CalendarBody(props: CalendarBodyProps) {
   return (
@@ -33,9 +33,9 @@ function WeekdayRow() {
   );
 }
 
-type DayGridProps = {
+interface DayGridProps {
   displayDate: DateTime;
-};
+}
 
 function DayGrid({ displayDate, }: DayGridProps) {
   const grid = computeDateGrid(displayDate);
@@ -72,10 +72,10 @@ function computeDateGrid(date: DateTime): DateTime[][] {
   return weeks;
 }
 
-type DayTileProps = {
+interface DayTileProps {
   date: DateTime;
   discrete: boolean;
-};
+}
 
 function DayTile({ date, discrete }: DayTileProps) {
   const currentDate = useDate();

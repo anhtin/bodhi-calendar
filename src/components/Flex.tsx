@@ -2,7 +2,7 @@ import React, { HTMLProps } from 'react';
 
 type Props = {
   direction?: 'row' | 'column';
-  flex?: number,
+  flex?: number;
   justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-around' | 'space-between';
   alignItems?: 'flex-start' | 'flex-end' | 'center' | 'space-around' | 'space-between';
 } & HTMLProps<HTMLDivElement>;
@@ -14,7 +14,7 @@ function Flex({
   alignItems,
   style,
   ...htmlProps
-}: Props) {
+}: Props): JSX.Element {
   return (
     <div
       style={{

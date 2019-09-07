@@ -2,9 +2,9 @@ import React from 'react';
 
 import styles from './OpenSettingsButton.module.scss';
 
-type Props = {
+interface Props {
   onClick: () => void;
-};
+}
 
 function OpenSettingsButton({ onClick }: Props) {
   return (

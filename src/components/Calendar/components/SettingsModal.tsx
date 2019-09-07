@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Modal, ModalBackground, Select } from 'bloomer';
 import { ModalCard } from 'bloomer/lib/components/Modal/Card/ModalCard';
 import { ModalCardHeader } from 'bloomer/lib/components/Modal/Card/ModalCardHeader';
@@ -13,12 +13,12 @@ import { getVegetarianSchedules, setVegetarianSchedule } from 'utils/store';
 import { findScheduleByName } from 'utils/helpers';
 import { Settings, VegetarianSchedule } from 'types';
 
-type Props = {
+interface Props {
   settings: Settings;
   visible: boolean;
   onHide: () => void;
   onUpdate: (newConfig: Settings) => void;
-};
+}
 
 function SettingsModal({ settings, visible, onHide, onUpdate, }: Props) {
   return (
@@ -35,7 +35,7 @@ function SettingsModal({ settings, visible, onHide, onUpdate, }: Props) {
             <Control>
               <Select
                 value={settings.schedule.name}
-                onChange={(e: any) => (
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => (
                   onUpdate(
                     newSettingsFromSchedule(
                       findScheduleByName(e.target.value),
@@ -43,7 +43,7 @@ function SettingsModal({ settings, visible, onHide, onUpdate, }: Props) {
                     )
                   )
                 )
-              }>
+                }>
                 {getVegetarianSchedules().map(({ name }, i) => (
                   <option key={i}>{name}</option>
                 ))}
