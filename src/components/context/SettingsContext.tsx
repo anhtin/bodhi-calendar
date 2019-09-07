@@ -1,13 +1,13 @@
 import React from 'react';
-import { useState, createContext, HTMLProps, Dispatch, SetStateAction } from 'react';
+import { useState, createContext, HTMLProps } from 'react';
 
-import { Settings } from 'types';
+import { Settings, MutableContextUpdate } from 'types';
 import { getVegetarianSchedule } from 'utils/store';
 
 const initialSettings: Settings = { schedule: getVegetarianSchedule() };
 const SettingsContext = createContext([
   initialSettings,
-  (() => { }) as Dispatch<SetStateAction<Settings>>
+  (() => { }) as MutableContextUpdate<Settings>
 ]);
 
 export function SettingsProvider({ children }: HTMLProps<HTMLElement>) {
