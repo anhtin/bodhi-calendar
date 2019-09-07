@@ -1,0 +1,33 @@
+main {
+  padding: 2vh;
+  font-size: calc(1rem + 1vw);
+  box-sizing: border-box;
+}
+
+.logo {
+  height: 90px;
+}
+
+.credits {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+footer {
+  display: flex !important;
+  background-color: transparent;
+  padding: 2vh;
+}
+
+footer p {
+  font-size: x-small;
+  white-space: pre-wrap;
+}
+
+@media only screen and (max-width: 650px) {
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
