@@ -1,0 +1,16 @@
+@import 'assets/sass/main.scss';
+
+.messageBar {
+  padding: 2vh;
+  background-color: $c-brown;
+  color: $c-grey-light;
+}
+
+.messageBar p {
+  white-space: pre-wrap;
+}
+
+.messageTitle {
+  font-weight: bold;
+  text-transform: uppercase;
+}

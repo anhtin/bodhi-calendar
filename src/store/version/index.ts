@@ -1,4 +1,4 @@
-import { getNpmVersion } from 'utils/environment-variables';
+import { getAppVersion } from 'utils/environment-variables';
 
 export function getVersion(): string {
   const storeVersion = localStorage.getItem('version');
@@ -6,7 +6,7 @@ export function getVersion(): string {
     return storeVersion;
   }
 
-  const appVersion = getNpmVersion();
+  const appVersion = getAppVersion();
   setVersion(appVersion);
   return appVersion;
 }

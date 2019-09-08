@@ -1,38 +1,37 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { useEffect, ReactNode } from 'react';
 
 import * as serviceWorker from 'utils/serviceWorker';
-import styles from './ServiceWorker.module.scss';
+import { useMessages } from 'hooks';
+import { Message } from 'contexts';
 
 interface Props {
   children: ReactNode;
 }
 
 function ServiceWorker({ children }: Props) {
-  const [hasNewVersion, setHasNewVersion] = useState(false);
+  const [messages, setMessages] = useMessages();
 
   useEffect(() => {
-    // If you want your app to work offline and load faster, you can change
-    // unregister() to register() below. Note this comes with some pitfalls.
-    // Learn more about service workers: https://bit.ly/CRA-PWA
-    serviceWorker.register({ onUpdate: () => setHasNewVersion(true) });
+    serviceWorker.register({
+      onUpdate: () => setMessages([...messages, createUpdateMessage()])
+    });
   });
 
-  return (
-    <>
-      {hasNewVersion && (
-        <div className={styles.notificationBar} role="alert">
-          <p>
-            <span className={styles.notificationTitle}>UPDATE:</span>
-            {' '}
-            There is a new version of Bodhi Calendar available. To update,
-            please close all open tabs of Bodhi Calendar before visiting this
-            page again.
-          </p>
-        </div>
-      )}
-      {children}
-    </>
-  );
+  return <>{children}</>;
+}
+
+function createUpdateMessage(): Message {
+  return {
+    title: 'Update',
+    content: (
+      <p>
+        There is a new version of Bodhi Calendar available. To update,
+        please close all open tabs of Bodhi Calendar before visiting this
+        page again.
+      </p>
+    ),
+    status: 'INFO'
+  };
 }
 
 export default ServiceWorker;

@@ -1,4 +1,4 @@
-import { getNpmVersion } from 'utils/environment-variables';
+import { getAppVersion } from 'utils/environment-variables';
 import { isOutdated } from 'utils/semver';
 import { getVegetarianSchedule } from './settings/vegetarian';
 import { getVersion, setVersion } from './version';
@@ -27,7 +27,7 @@ export function initializeStore(): Store {
 function migrateStoreIfNeccessary(): void {
   if (localStorage) {
     const storeVersion = getVersion();
-    const appVersion = getNpmVersion();
+    const appVersion = getAppVersion();
     if (isOutdated(storeVersion, appVersion)) {
       migrateFrom(storeVersion);
     }

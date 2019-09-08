@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import Calendar from 'components/Calendar';
 import ErrorBoundary from 'components/ErrorBoundary';
+import MessageBar from 'components/MessageBar';
 import ServiceWorker from 'components/ServiceWorker';
 import { DateProvider } from 'contexts/DateContext';
 import { StoreProvider } from 'contexts/StoreContext';
@@ -9,28 +10,40 @@ import logo from 'assets/images/logo.svg';
 import './App.css';
 
 import 'assets/sass/main.scss';
+import { MessageProvider } from 'contexts';
 
 const App = () => {
   return (
     <div className="app">
-      <ServiceWorker>
-        <ErrorBoundary>
-          <Main />
-          <Footer />
-        </ErrorBoundary>
-      </ServiceWorker>
+      <ErrorBoundary>
+        <Provider>
+          <ServiceWorker>
+            <Main />
+            <Footer />
+          </ServiceWorker>
+        </Provider>
+      </ErrorBoundary>
     </div>
+  );
+}
+
+function Provider({ children }: {children: ReactNode}) {
+  return (
+    <MessageProvider>
+      <StoreProvider>
+        <DateProvider>
+          {children}
+        </DateProvider>
+      </StoreProvider>
+    </MessageProvider>
   );
 }
 
 function Main() {
   return (
     <main>
-      <StoreProvider>
-        <DateProvider>
-          <Calendar />
-        </DateProvider>
-      </StoreProvider>
+      <MessageBar />
+      <Calendar />
     </main>
   );
 }

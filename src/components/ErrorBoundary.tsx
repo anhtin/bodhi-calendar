@@ -1,25 +1,26 @@
 import React, { ReactNode } from 'react';
 
 import { logError } from 'utils/logging';
+import Flex from './Flex';
 
-interface Props {
+interface ErrorBoundaryProps {
   children: ReactNode;
 }
 
-interface State {
-  hasError: boolean;
+interface ErrorBoundaryState {
+  error: Error | null;
 }
 
-class ErrorBoundary extends React.Component<Props, State> {
-  constructor(props: Props) {
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = {
-      hasError: false,
+      error: null,
     };
   }
 
-  static getDerivedStateFromError() {
-    return { hasError: true };
+  static getDerivedStateFromError(error: Error) {
+    return { error };
   }
 
   componentDidCatch(error: Error) {
@@ -27,20 +28,31 @@ class ErrorBoundary extends React.Component<Props, State> {
   }
 
   render() {
-    if (this.state.hasError) {
-      return <ErrorView />;
+    const { error } = this.state;
+
+    if (error === null) {
+      return this.props.children;
     }
 
-    return this.props.children;
+    return <GenericErrorView />
   }
 }
 
-function ErrorView() {
+function GenericErrorView() {
   return (
-    <>
-      <h1>Something went wrong.</h1>
+    <Flex
+      direction="column"
+      flex={1}
+      justifyContent="space-around"
+      alignItems="center"
+      style={{ height: '45vh', padding: '2vh', textAlign: 'center' }}
+      tag='main'
+    >
+      <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>
+       SOMETHING WENT WRONG
+      </h1>
       <p>Please try again later.</p>
-    </>
+    </Flex>
   );
 }
 

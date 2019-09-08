@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 import Body from './components/Body';
-import Flex from 'components/Flex';
 import Header from './components/Header';
 import OpenSettingsButton from './components/OpenSettingsButton';
 import SettingsModal from './components/SettingsModal';
 import { useDate } from 'hooks/contexts';
+import styles from './Calendar.module.scss';
 
 function Calendar() {
   const currentDate = useDate()
@@ -16,11 +16,7 @@ function Calendar() {
   const onNextMonth = () => setDisplayDate(displayDate.plus({ months: 1 }));
 
   return (
-    <Flex
-      direction="column"
-      justifyContent="space-around"
-      alignItems="space-around"
-    >
+    <div className={styles.calendar}>
       <Header {...{ displayDate, onPrevMonth, onNextMonth }} />
       <Body displayDate={displayDate} />
       <SettingsModal
@@ -28,7 +24,7 @@ function Calendar() {
         onHide={() => setShowSettings(false)}
       />
       <OpenSettingsButton onClick={() => setShowSettings(true)} />
-    </Flex>
+    </div>
   );
 }
 
