@@ -5,7 +5,8 @@ main {
 }
 
 .logo {
-  height: 90px;
+  height: 70px;
+  margin: 10px;
 }
 
 .credits {
