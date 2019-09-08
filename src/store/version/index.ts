@@ -12,5 +12,5 @@ export function getVersion(): string {
 }
 
 export function setVersion(version: string) {
-  localStorage.setItem('version', JSON.stringify(version));
+  localStorage.setItem('version', version);
 }
