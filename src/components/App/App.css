@@ -16,18 +16,13 @@ main {
 
 footer {
   display: flex !important;
-  background-color: transparent;
+  flex-direction: column;
+  text-align: center;
   padding: 2vh;
+  background-color: transparent;
 }
 
 footer p {
   font-size: x-small;
   white-space: pre-wrap;
-}
-
-@media only screen and (max-width: 650px) {
-  footer {
-    flex-direction: column;
-    text-align: center;
-  }
 }
