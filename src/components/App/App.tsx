@@ -1,18 +1,21 @@
 import React from 'react';
 
 import Calendar from 'components/Calendar';
-import { SettingsProvider } from 'components/context/SettingsContext';
-import { DateProvider } from 'components/context/DateContext';
+import { DateProvider } from 'contexts/DateContext';
+import { StoreProvider } from 'contexts/StoreContext';
 import logo from 'assets/images/logo.svg';
 import './App.css';
 
 import 'assets/sass/main.scss';
+import ErrorBoundary from 'components/ErrorBoundary';
 
 const App = () => {
   return (
     <div className="app">
-      <Main />
-      <Footer />
+      <ErrorBoundary>
+        <Main />
+        <Footer />
+      </ErrorBoundary>
     </div>
   );
 }
