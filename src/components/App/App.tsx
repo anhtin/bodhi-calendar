@@ -1,21 +1,24 @@
 import React from 'react';
 
 import Calendar from 'components/Calendar';
+import ErrorBoundary from 'components/ErrorBoundary';
+import ServiceWorker from 'components/ServiceWorker';
 import { DateProvider } from 'contexts/DateContext';
 import { StoreProvider } from 'contexts/StoreContext';
 import logo from 'assets/images/logo.svg';
 import './App.css';
 
 import 'assets/sass/main.scss';
-import ErrorBoundary from 'components/ErrorBoundary';
 
 const App = () => {
   return (
     <div className="app">
-      <ErrorBoundary>
-        <Main />
-        <Footer />
-      </ErrorBoundary>
+      <ServiceWorker>
+        <ErrorBoundary>
+          <Main />
+          <Footer />
+        </ErrorBoundary>
+      </ServiceWorker>
     </div>
   );
 }
