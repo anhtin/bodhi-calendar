@@ -23,11 +23,11 @@ const App = () => {
 function Main() {
   return (
     <main>
-      <SettingsProvider>
+      <StoreProvider>
         <DateProvider>
           <Calendar />
         </DateProvider>
-      </SettingsProvider>
+      </StoreProvider>
     </main>
   );
 }

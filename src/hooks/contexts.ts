@@ -1,17 +1,9 @@
 import { useContext } from 'react';
-import { DateTime } from 'luxon';
 
-import DateContext from 'components/context/DateContext';
-import SettingsContext from 'components/context/SettingsContext';
-import { Settings, MutableContextValue } from 'types';
+import DateContext from 'contexts/DateContext';
+import StoreContext from 'contexts/StoreContext';
+import { useMutableContext } from 'utils/helpers';
+import { Store } from 'store';
 
-const useDate = (): DateTime => useContext(DateContext)
-
-const useSettings = (): MutableContextValue<Settings> => (
-  useContext(SettingsContext) as MutableContextValue<Settings>
-);
-
-export {
-  useDate,
-  useSettings,
-};
+export const useDate = () => useContext(DateContext)
+export const useStore = () => useMutableContext<Store>(StoreContext);

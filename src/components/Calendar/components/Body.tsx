@@ -3,7 +3,7 @@ import { DateTime, Info } from 'luxon';
 import solarLunar from 'solarlunar';
 
 import Flex from 'components/Flex';
-import { useDate, useSettings } from 'hooks/contexts';
+import { useDate, useStore } from 'hooks';
 import { composeCssClasses } from 'utils/helpers';
 import styles from './Body.module.scss';
 
@@ -79,7 +79,8 @@ interface DayTileProps {
 
 function DayTile({ date, discrete }: DayTileProps) {
   const currentDate = useDate();
-  const [ { schedule } ] = useSettings();
+  const [store] = useStore();
+  const { schedule } = store.settings;
   const cDate = solarLunar.solar2lunar(date.year, date.month, date.day);
 
   const LunarPart = () => (
