@@ -8,7 +8,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "lint": "eslint --fix src/**/*.{tsx,ts}",
-    "predeploy": "yarn lint && CI=true yarn test && yarn build",
+    "predeploy": "yarn lint && CI=true yarn test && yarn version --strict-semver && yarn build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
