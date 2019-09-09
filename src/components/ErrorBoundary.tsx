@@ -1,9 +1,8 @@
 import React, { ReactNode } from 'react';
 
-import { logError } from 'utils/logging';
 import Flex from './Flex';
 import { logError } from 'utils/logging';
-import localStore from 'utils/localStorage';
+import { resetLocal, navigateTo } from 'utils/browser';
 import { InvalidAppVersion } from 'store';
 
 interface ErrorBoundaryProps {
@@ -37,11 +36,44 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
       return this.props.children;
     }
 
+    if (error instanceof InvalidAppVersion) {
+      resetLocal();
+      return <RedirectionErrorView />
+    }
+
     return <GenericErrorView />
   }
 }
 
 function GenericErrorView() {
+  return (
+    <Container>
+      <Header title="SOMETHING WENT WRONG" />
+      <p>Please try again later.</p>
+    </Container>
+  );
+}
+
+interface RedirectionErrorViewProps {
+  targetUrl: string;
+}
+
+function RedirectionErrorView({ targetUrl = '.' }) {
+  navigateTo(targetUrl);
+
+  return (
+    <Container>
+      <Header title="PLEASE WAIT" />
+      <p>Currently redirecting you...</p>
+    </Container>
+  );
+}
+
+interface ContainerProps {
+  children: ReactNode;
+}
+
+function Container({ children }: ContainerProps) {
   return (
     <Flex
       direction="column"
@@ -51,11 +83,20 @@ function GenericErrorView() {
       style={{ height: '45vh', padding: '2vh', textAlign: 'center' }}
       tag='main'
     >
-      <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>
-       SOMETHING WENT WRONG
-      </h1>
-      <p>Please try again later.</p>
+      {children}
     </Flex>
+  );
+}
+
+interface HeaderProps {
+  title: string;
+}
+
+function Header({ title }: HeaderProps) {
+  return (
+    <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>
+      {title}
+    </h1>
   );
 }
 

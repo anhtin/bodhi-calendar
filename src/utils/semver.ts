@@ -1,4 +1,3 @@
-const versionPattern = /^(\d+)\.(\d+)\.(d+)$/.compile();
 
 export function isOutdated(aVersion: string, bVersion: string): boolean {
   const a = parseSemver(aVersion);
@@ -8,7 +7,7 @@ export function isOutdated(aVersion: string, bVersion: string): boolean {
 
 type Semver = [number, number, number];
 
-function compareSemver(
+export function compareSemver(
   [aMajor, aMinor, aPatch]: Semver,
   [bMajor, bMinor, bPatch]: Semver
 ): number {
@@ -21,9 +20,10 @@ function compareSemver(
   return 0;
 }
 
-function parseSemver(version: string): Semver {
-  const result = versionPattern.exec(version);
-  if (result === null) {
+export function parseSemver(version: string): Semver {
+  const semverPattern = /(\d+)\.(\d+)\.(\d+)/;
+  const result = version.match(semverPattern);
+  if (!result) {
     throw new Error(`Failed to parse semver from string: ${version}`)
   }
 
