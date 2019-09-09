@@ -11,6 +11,7 @@ import './App.css';
 
 import 'assets/sass/main.scss';
 import { MessageProvider } from 'contexts';
+import { useStore } from 'hooks';
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ function Main() {
 }
 
 function Footer() {
+  const [{ version }] = useStore();
   return (
     <footer>
       <img
@@ -67,6 +69,7 @@ function Footer() {
           {' '}
           <a href="https://github.com/anhtin">Tin Anh Nguyen</a>.
         </p>
+        <p>Version {version}</p>
       </div>
     </footer>
   );
