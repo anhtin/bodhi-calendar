@@ -2,6 +2,9 @@ import React, { ReactNode } from 'react';
 
 import { logError } from 'utils/logging';
 import Flex from './Flex';
+import { logError } from 'utils/logging';
+import localStore from 'utils/localStorage';
+import { InvalidAppVersion } from 'store';
 
 interface ErrorBoundaryProps {
   children: ReactNode;

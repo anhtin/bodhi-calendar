@@ -1,24 +1,25 @@
 import { defaultVegetarianSchedules } from './data';
 
+import { saveLocal, loadLocal } from 'utils/browser';
 import { VegetarianSchedule } from './types';
 
+const SCHEDULE_STORE_KEY = 'schedule';
+
 export function setVegetarianSchedule(schedule: VegetarianSchedule): void {
-  if (localStorage) {
-    localStorage.setItem('schedule', schedule.name);
-  }
+  saveLocal(SCHEDULE_STORE_KEY, schedule);
 }
 
 export function getVegetarianSchedule(): VegetarianSchedule {
-  if (localStorage) {
-    const scheduleName = localStorage.getItem('schedule');
-    if (scheduleName) {
-      const schedule = getVegetarianScheduleByName(scheduleName);
-      if (schedule) return schedule;
+  const scheduleName = loadLocal(SCHEDULE_STORE_KEY);
+  if (scheduleName) {
+    const schedule = getVegetarianScheduleByName(scheduleName);
+    if (schedule) {
+      return schedule;
     }
   }
 
   const defaultVegetarianSchedule = defaultVegetarianSchedules[0];
-  localStorage.setItem('schedule', defaultVegetarianSchedule.name);
+  saveLocal(SCHEDULE_STORE_KEY, defaultVegetarianSchedule.name);
   return defaultVegetarianSchedule;
 }
 
