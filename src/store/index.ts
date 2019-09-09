@@ -52,7 +52,9 @@ function migrateStoreIfNeccessary(): void {
 
 function migrateFrom(version: string) {
   // TODO: Migration code (when relevant)
-  setVersion(version);
+
+  const updatedVersion = getAppVersion();
+  setVersion(updatedVersion);
 }
 
 export * from './settings';
