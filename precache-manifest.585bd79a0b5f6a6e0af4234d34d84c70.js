@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "171275d2a010e52bc6b88a40b5bd35f9",
+    "revision": "11e31a47037ca713f214daf2cf988539",
     "url": "/bodhi-calendar-v2/index.html"
   },
   {
-    "revision": "7c52da28aaa881e8440c",
+    "revision": "5b0c312d315339a69121",
     "url": "/bodhi-calendar-v2/static/css/main.43533d16.chunk.css"
   },
   {
-    "revision": "e6b67fbefa19a8bd4389",
-    "url": "/bodhi-calendar-v2/static/js/2.5dcfc45f.chunk.js"
+    "revision": "83f81f271cc2d2b21d3f",
+    "url": "/bodhi-calendar-v2/static/js/2.e302b726.chunk.js"
   },
   {
-    "revision": "7c52da28aaa881e8440c",
-    "url": "/bodhi-calendar-v2/static/js/main.f53e323d.chunk.js"
+    "revision": "5b0c312d315339a69121",
+    "url": "/bodhi-calendar-v2/static/js/main.e62f7849.chunk.js"
   },
   {
     "revision": "76923c8f563565e73b4f",
