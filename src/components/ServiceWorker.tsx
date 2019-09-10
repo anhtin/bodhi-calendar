@@ -1,8 +1,9 @@
 import React, { useEffect, ReactNode } from 'react';
 
-import * as serviceWorker from 'utils/serviceWorker';
 import { useMessages } from 'hooks';
 import { Message } from 'contexts';
+import { getAppName } from 'utils/environment-variables';
+import * as serviceWorker from 'utils/serviceWorker';
 
 interface Props {
   children: ReactNode;
@@ -25,9 +26,9 @@ function createUpdateMessage(): Message {
     title: 'Update',
     content: (
       <p>
-        There is a new version of Bodhi Calendar available. To update,
-        please close all open tabs of Bodhi Calendar before visiting this
-        page again.
+        There is a new version of {getAppName()} available. To update, please
+        close all open tabs of {getAppName()} before visiting this page
+        again.
       </p>
     ),
     status: 'INFO'
