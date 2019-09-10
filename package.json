@@ -2,7 +2,7 @@
   "name": "bodhi-calendar-v2",
   "version": "0.1.4",
   "private": true,
-  "homepage": "https://anhtin.github.io/bodhi-calendar-v2",
+  "homepage": "https://anhtin.github.io/bodhi-calendar",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
