@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 
 import Flex from './Flex';
-import { logError } from 'utils/logging';
+import { logError, initializeLogging } from 'utils/logging';
 import { resetLocal, navigateTo } from 'utils/browser';
 import { InvalidAppVersion } from 'store';
 
@@ -23,6 +23,10 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 
   static getDerivedStateFromError(error: Error) {
     return { error };
+  }
+
+  componentDidMount() {
+    initializeLogging();
   }
 
   componentDidCatch(error: Error) {
@@ -55,10 +59,10 @@ function GenericErrorView() {
 }
 
 interface RedirectionErrorViewProps {
-  targetUrl: string;
+  targetUrl?: string;
 }
 
-function RedirectionErrorView({ targetUrl = '.' }) {
+function RedirectionErrorView({ targetUrl = '.' }: RedirectionErrorViewProps) {
   navigateTo(targetUrl);
 
   return (

@@ -28,6 +28,7 @@
     ]
   },
   "dependencies": {
+    "@sentry/browser": "5.6.3",
     "bloomer": "^0.6.5",
     "bulma": "^0.7.5",
     "luxon": "^1.16.0",

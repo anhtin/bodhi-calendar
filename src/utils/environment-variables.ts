@@ -13,6 +13,10 @@ export function getAppVersion(): string {
 
 export class UnknownAppVersionError extends Error {}
 
+export function getEnvironment(): string {
+  return getEnvironmentVariable('NODE_ENV', 'production');
+}
+
 function getEnvironmentVariable(name: string, defaultValue: string): string {
   return process.env[name] || defaultValue;
 }
