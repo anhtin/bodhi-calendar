@@ -69,7 +69,7 @@ function Footer() {
           {' '}
           <a href="https://github.com/anhtin">Tin Anh Nguyen</a>.
         </p>
-        <p>Version {version}</p>
+        <p>Your are currently running version {version}.</p>
       </div>
     </footer>
   );
