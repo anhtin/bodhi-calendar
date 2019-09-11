@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "33ab2e27140671ab0534a13d4926b76a",
+    "revision": "c910d8d7e0d9d50616103153aaf1642e",
     "url": "/bodhi-calendar/index.html"
   },
   {
-    "revision": "ee9f1c1c0e87426c57d1",
+    "revision": "5b95417c4c3533635843",
     "url": "/bodhi-calendar/static/css/main.44bf20e7.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bodhi-calendar/static/js/2.8cb23721.chunk.js"
   },
   {
-    "revision": "ee9f1c1c0e87426c57d1",
-    "url": "/bodhi-calendar/static/js/main.4c7daf2f.chunk.js"
+    "revision": "5b95417c4c3533635843",
+    "url": "/bodhi-calendar/static/js/main.346b45a9.chunk.js"
   },
   {
     "revision": "213e01c5d4056af89669",
