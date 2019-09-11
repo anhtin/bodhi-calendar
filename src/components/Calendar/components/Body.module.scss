@@ -11,12 +11,13 @@
 
 .calendarTileVegetarian {
   font-weight: bold;
-  color: $c-secondary;
+  color: $c-secondary !important;
 }
 
 .calendarTileToday {
   font-weight: bold;
   border-radius: 500%;
+  color: $c-yellow-light;
   background-color: $c-primary;
 }
 
