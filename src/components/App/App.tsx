@@ -56,10 +56,10 @@ function Footer() {
       <img className="logo" alt="Logo with a bodhi leaf" src={logo} />
       <div className="credits">
         <p>
-          <em>Bodhi Calendar</em> is an{" "}
-          <a href="https://github.com/anhtin/bodhi-calendar-v2">
+          <em>Bodhi Calendar</em> is an{' '}
+          <a href="https://github.com/anhtin/bodhi-calendar">
             open-source project
-          </a>{" "}
+          </a>{' '}
           created by <a href="https://github.com/anhtin">Tin Anh Nguyen</a>.
         </p>
         <p>You are currently running version {version}.</p>
