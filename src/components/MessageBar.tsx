@@ -11,18 +11,16 @@ function MessageBar() {
   }
 
   return (
-    <div className={styles.messageBar} role="region" >
+    <section className={styles.messageBar}>
       {messages.map(({ title, content }, i) => (
-        <section key={i}>
+        <article key={i} className={styles.messageContainer}>
           <span className={styles.messageTitle} role="heading">
             {title}:
           </span>
-          <div className={styles.messageContent}>
-            {' '}{content}
-          </div>
-        </section>
+          {' '}{content}
+        </article>
       ))}
-    </div>
+    </section>
   );
 }
 

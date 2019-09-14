@@ -1,12 +1,9 @@
 @import 'assets/sass/main.scss';
 
 .messageBar {
-  padding: 2vh;
+  padding: 0.3em;
   background-color: $c-brown;
   color: $c-grey-light;
-}
-
-.messageBar p {
   white-space: pre-wrap;
 }
 
@@ -15,6 +12,11 @@
   text-transform: uppercase;
 }
 
-.messageContent {
+.messageContainer > p {
   display: inline;
+}
+
+.messageContainer a {
+  color: white;
+  text-decoration: underline;
 }
