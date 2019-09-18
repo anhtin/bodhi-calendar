@@ -24,7 +24,7 @@ export const MessageProvider = function ({ children }: Props) {
       {children}
     </MessageContext.Provider>
   );
-}
+};
 
 export const MessageConsumer = MessageContext.Consumer;
 
