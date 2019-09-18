@@ -1,4 +1,4 @@
-import { getEnvironment } from "./environment-variables";
+import { getEnvironment } from './environment-variables';
 
 export function isProduction() {
   return getEnvironment() === 'production';

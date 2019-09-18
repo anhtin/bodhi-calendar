@@ -85,7 +85,7 @@ function Container({ children }: ContainerProps) {
       justifyContent="space-around"
       alignItems="center"
       style={{ height: '45vh', padding: '2vh', textAlign: 'center' }}
-      tag='main'
+      tag="main"
     >
       {children}
     </Flex>
