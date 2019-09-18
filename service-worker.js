@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bodhi-calendar/precache-manifest.7ac70b4c6c49388ae155366f77ba9036.js"
+  "/bodhi-calendar/precache-manifest.bccb1a1221b55e786010c191d6ec8696.js"
 );
 
 self.addEventListener('message', (event) => {
