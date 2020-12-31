@@ -16,6 +16,8 @@ export const WeekRow = styled.div`
 
 export const WeekDay = styled.h3`
   flex: 1;
+  font-size: 1em;
+  font-weight: normal;
   text-align: center;
 `;
 

@@ -7,15 +7,16 @@ import ServiceWorker from 'components/ServiceWorker';
 import { DateProvider } from 'contexts/DateContext';
 import { StoreProvider } from 'contexts/StoreContext';
 import logo from 'assets/images/logo.svg';
-import './App.css';
 
-import 'assets/sass/main.scss';
 import { MessageProvider } from 'contexts';
 import { useStore } from 'hooks';
+import GlobalStyle from './GlobalStyle';
+import { Wrapper } from './styled';
 
 const App = () => {
   return (
-    <div className="app">
+    <Wrapper>
+      <GlobalStyle />
       <ErrorBoundary>
         <Provider>
           <ServiceWorker>
@@ -24,7 +25,7 @@ const App = () => {
           </ServiceWorker>
         </Provider>
       </ErrorBoundary>
-    </div>
+    </Wrapper>
   );
 };
 

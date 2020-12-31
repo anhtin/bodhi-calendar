@@ -24,7 +24,7 @@ function Calendar() {
         visible={showSettings}
         onHide={() => setShowSettings(false)}
       />
-      <OpenSettingsButton onClick={() => setShowSettings(true)} />
+      <OpenSettingsButton onClick={() => setShowSettings(!showSettings)} />
     </Wrapper>
   );
 }
