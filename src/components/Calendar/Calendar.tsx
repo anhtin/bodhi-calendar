@@ -6,7 +6,7 @@ import Header from './components/Header';
 import OpenSettingsButton from './components/OpenSettingsButton';
 import SettingsModal from './components/SettingsModal';
 import { useDate } from 'hooks/contexts';
-import styles from './Calendar.module.scss';
+import { Wrapper } from './styled';
 
 function Calendar() {
   const currentDate = useDate();
@@ -17,7 +17,7 @@ function Calendar() {
   const onNextMonth = () => setDisplayDate(addMonths(displayDate, 1));
 
   return (
-    <div className={styles.calendar}>
+    <Wrapper>
       <Header {...{ displayDate, onPrevMonth, onNextMonth }} />
       <Body displayDate={displayDate} />
       <SettingsModal
@@ -25,7 +25,7 @@ function Calendar() {
         onHide={() => setShowSettings(false)}
       />
       <OpenSettingsButton onClick={() => setShowSettings(true)} />
-    </div>
+    </Wrapper>
   );
 }
 

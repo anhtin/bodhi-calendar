@@ -1,17 +1,13 @@
 import React from 'react';
 
-import styles from './OpenSettingsButton.module.scss';
+import { Button } from './styled';
 
 interface Props {
   onClick: () => void;
 }
 
 function OpenSettingsButton({ onClick }: Props) {
-  return (
-    <div className={styles.configurationButton} onClick={onClick}>
-      ⚙
-    </div>
-  );
+  return <Button onClick={onClick}>⚙</Button>;
 }
 
 export default OpenSettingsButton;

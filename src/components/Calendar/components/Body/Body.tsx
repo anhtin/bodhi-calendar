@@ -10,11 +10,19 @@ import {
 } from 'date-fns';
 import solarLunar from 'solarlunar';
 
-import Flex from 'components/Flex';
 import { useDate, useStore } from 'hooks';
 import { getStartOfWeek, WEEK_DAYS } from 'utils/date';
-import { composeCssClasses } from 'utils/helpers';
-import styles from './Body.module.scss';
+import {
+  Wrapper,
+  WeekRow,
+  WeekDay,
+  Grid,
+  GridRow,
+  DateWrapper,
+  LunarPart,
+  SolarPart,
+  TileWrapper,
+} from './styled';
 
 interface CalendarBodyProps {
   displayDate: Date;
@@ -22,25 +30,20 @@ interface CalendarBodyProps {
 
 function CalendarBody(props: CalendarBodyProps) {
   return (
-    <Flex direction="column" justifyContent="space-between">
+    <Wrapper>
       <WeekdayRow />
       <DayGrid {...props} />
-    </Flex>
+    </Wrapper>
   );
 }
 
 function WeekdayRow() {
   return (
-    <Flex
-      justifyContent="space-around"
-      style={{ borderBottom: '1px solid black' }}
-    >
+    <WeekRow>
       {WEEK_DAYS.map((day, i) => (
-        <h3 key={i} style={{ flex: 1, textAlign: 'center' }}>
-          {day}
-        </h3>
+        <WeekDay key={i}>{day}</WeekDay>
       ))}
-    </Flex>
+    </WeekRow>
   );
 }
 
@@ -52,17 +55,17 @@ function DayGrid({ displayDate }: DayGridProps) {
   const grid = computeDateGrid(displayDate);
 
   return (
-    <div className={styles.dayGrid}>
+    <Grid>
       {grid.map((row, i) => (
-        <Flex key={i} justifyContent="space-around">
+        <GridRow key={i}>
           {row.map((col, j) => (
-            <Flex key={j} flex={1} justifyContent="space-around">
-              <DayTile date={col} discrete={!isSameMonth(displayDate, col)} />
-            </Flex>
+            <DateWrapper key={j}>
+              <DateTile date={col} discrete={!isSameMonth(displayDate, col)} />
+            </DateWrapper>
           ))}
-        </Flex>
+        </GridRow>
       ))}
-    </div>
+    </Grid>
   );
 }
 
@@ -80,12 +83,12 @@ function computeDateGrid(date: Date): Date[][] {
   return weeks;
 }
 
-interface DayTileProps {
+interface DateTileProps {
   date: Date;
   discrete: boolean;
 }
 
-function DayTile({ date, discrete }: DayTileProps) {
+function DateTile({ date, discrete }: DateTileProps) {
   const currentDate = useDate();
   const [store] = useStore();
   const { schedule } = store.settings;
@@ -95,21 +98,14 @@ function DayTile({ date, discrete }: DayTileProps) {
     getDate(date)
   );
 
-  const LunarPart = () => (
-    <div className={styles.calendarTileLunarPart}>{cDate.lDay}</div>
-  );
-  const SolarPart = () => (
-    <div className={styles.calendarTileSolarPart}>{getDate(date)}</div>
-  );
-
   return (
     <Tile
       isToday={isSameDay(date, currentDate)}
       isVegetarianDay={schedule.pred(cDate)}
       isMonth={!discrete}
     >
-      <LunarPart />
-      <SolarPart />
+      <LunarPart>{cDate.lDay}</LunarPart>
+      <SolarPart>{getDate(date)}</SolarPart>
     </Tile>
   );
 }
@@ -122,19 +118,13 @@ type TileProps = {
 
 function Tile({ isToday, isVegetarianDay, isMonth, children }: TileProps) {
   return (
-    <Flex
-      className={composeCssClasses([
-        styles.calendarTile,
-        !isMonth && styles.calendarTileDiscrete,
-        isToday && styles.calendarTileToday,
-        isVegetarianDay && styles.calendarTileVegetarian,
-      ])}
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
+    <TileWrapper
+      isMonth={isMonth}
+      isToday={isToday}
+      isVegetarian={isVegetarianDay}
     >
       {children}
-    </Flex>
+    </TileWrapper>
   );
 }
 

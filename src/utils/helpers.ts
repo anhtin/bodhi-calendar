@@ -20,7 +20,3 @@ export function createMutableContext<T>(defaultValue: T | null = null) {
 export function useMutableContext<T>(context: MutableContext<T>) {
   return useContext(context) as MutableContextValue<T>;
 }
-
-export function composeCssClasses(classes: (string | false)[]): string {
-  return classes.filter((cls): boolean => cls !== false).join(' ');
-}

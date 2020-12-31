@@ -26,15 +26,13 @@ const App = () => {
       </ErrorBoundary>
     </div>
   );
-}
+};
 
-function Provider({ children }: {children: ReactNode}) {
+function Provider({ children }: { children: ReactNode }) {
   return (
     <MessageProvider>
       <StoreProvider>
-        <DateProvider>
-          {children}
-        </DateProvider>
+        <DateProvider>{children}</DateProvider>
       </StoreProvider>
     </MessageProvider>
   );

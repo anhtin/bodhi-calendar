@@ -1,7 +1,7 @@
 import React from 'react';
 
-import styles from './MessageBar.module.scss';
 import { useMessages } from 'hooks';
+import { Wrapper, MessageWrapper, Title } from './styled';
 
 function MessageBar() {
   const [messages] = useMessages();
@@ -11,13 +11,13 @@ function MessageBar() {
   }
 
   return (
-    <section className={styles.messageBar}>
+    <Wrapper>
       {messages.map(({ title, content }, i) => (
-        <article key={i} className={styles.messageContainer}>
-          <header className={styles.messageTitle}>{title}:</header> {content}
-        </article>
+        <MessageWrapper key={i}>
+          <Title>{title}:</Title> {content}
+        </MessageWrapper>
       ))}
-    </section>
+    </Wrapper>
   );
 }
 
