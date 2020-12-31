@@ -75,5 +75,12 @@ export const TileWrapper = styled.div<TileWrapperProps>`
     background-color: ${colors.PRIMARY};
   `}
 
+  ${({ isVegetarian, isToday }) =>
+    isVegetarian &&
+    isToday &&
+    `
+    text-shadow: -0.5px 0.5px 0.5px #3b3b3b, 0.5px 0.5px 0.5px #3b3b3b, 0 -0.5px 0.5px #3b3b3b;
+  `}
+
   ${({ isMonth }) => !isMonth && `opacity: 0.5;`}
 `;
