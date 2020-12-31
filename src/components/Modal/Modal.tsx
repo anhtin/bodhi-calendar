@@ -22,6 +22,7 @@ function Modal({ isOpen, onClose, heading, children }: ModalProps) {
         onRequestClose={onClose}
         overlayClassName="ReactModal__Overlay"
         className="ReactModal__Content"
+        closeTimeoutMS={300}
         contentLabel={heading}
       >
         <Header>

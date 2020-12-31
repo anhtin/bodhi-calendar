@@ -7,7 +7,16 @@ export const StyleOverrides = createGlobalStyle`
     position: fixed;
     inset: 0px;
     background-color: rgba(10, 10, 10, 0.86);
-    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+
+    &--after-open {
+      opacity: 1;
+    }
+
+    &--before-close {
+      opacity: 0;
+    }
   }
 
   .ReactModal__Content {
