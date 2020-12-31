@@ -31,7 +31,7 @@
     "@sentry/browser": "5.6.3",
     "bloomer": "^0.6.5",
     "bulma": "^0.7.5",
-    "luxon": "^1.16.0",
+    "date-fns": "^2.16.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",

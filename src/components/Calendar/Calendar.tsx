@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { startOfWeek, addMonths, subMonths } from 'date-fns';
 
 import Body from './components/Body';
 import Header from './components/Header';
@@ -8,12 +9,12 @@ import { useDate } from 'hooks/contexts';
 import styles from './Calendar.module.scss';
 
 function Calendar() {
-  const currentDate = useDate()
-  const [displayDate, setDisplayDate] = useState(currentDate.startOf('month'));
+  const currentDate = useDate();
+  const [displayDate, setDisplayDate] = useState(startOfWeek(currentDate));
   const [showSettings, setShowSettings] = useState(false);
 
-  const onPrevMonth = () => setDisplayDate(displayDate.minus({ months: 1 }));
-  const onNextMonth = () => setDisplayDate(displayDate.plus({ months: 1 }));
+  const onPrevMonth = () => setDisplayDate(subMonths(displayDate, 1));
+  const onNextMonth = () => setDisplayDate(addMonths(displayDate, 1));
 
   return (
     <div className={styles.calendar}>

@@ -1,16 +1,15 @@
 import React, { useState, useEffect, createContext, HTMLProps } from 'react';
-import { DateTime } from 'luxon';
+import { isSameDay } from 'date-fns';
 
-const initialDate: DateTime = DateTime.local()
-const DateContext = createContext(initialDate);
+const DateContext = createContext(new Date());
 
 export function DateProvider({ children }: HTMLProps<HTMLElement>) {
-  const [currentDate, setCurrentDate] = useState(initialDate);
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const newDate = DateTime.local();
-      if (!newDate.hasSame(currentDate, 'day')) {
+      const newDate = new Date();
+      if (!isSameDay(currentDate, newDate)) {
         setCurrentDate(newDate);
       }
     }, 60000);
@@ -19,9 +18,7 @@ export function DateProvider({ children }: HTMLProps<HTMLElement>) {
   });
 
   return (
-    <DateContext.Provider value={currentDate}>
-      {children}
-    </DateContext.Provider>
+    <DateContext.Provider value={currentDate}>{children}</DateContext.Provider>
   );
 }
 

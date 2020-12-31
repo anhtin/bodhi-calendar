@@ -1,14 +1,23 @@
 import React, { HTMLProps } from 'react';
-import { DateTime, Info } from 'luxon';
+import {
+  isSameDay,
+  isSameMonth,
+  startOfMonth,
+  addDays,
+  getDate,
+  getMonth,
+  getYear,
+} from 'date-fns';
 import solarLunar from 'solarlunar';
 
 import Flex from 'components/Flex';
 import { useDate, useStore } from 'hooks';
+import { getStartOfWeek, WEEK_DAYS } from 'utils/date';
 import { composeCssClasses } from 'utils/helpers';
 import styles from './Body.module.scss';
 
 interface CalendarBodyProps {
-  displayDate: DateTime;
+  displayDate: Date;
 }
 
 function CalendarBody(props: CalendarBodyProps) {
@@ -26,18 +35,20 @@ function WeekdayRow() {
       justifyContent="space-around"
       style={{ borderBottom: '1px solid black' }}
     >
-      {Info.weekdaysFormat('short').map((day, i) => (
-        <h3 key={i} style={{ flex: 1, textAlign: 'center' }}>{day}</h3>
+      {WEEK_DAYS.map((day, i) => (
+        <h3 key={i} style={{ flex: 1, textAlign: 'center' }}>
+          {day}
+        </h3>
       ))}
     </Flex>
   );
 }
 
 interface DayGridProps {
-  displayDate: DateTime;
+  displayDate: Date;
 }
 
-function DayGrid({ displayDate, }: DayGridProps) {
+function DayGrid({ displayDate }: DayGridProps) {
   const grid = computeDateGrid(displayDate);
 
   return (
@@ -46,10 +57,7 @@ function DayGrid({ displayDate, }: DayGridProps) {
         <Flex key={i} justifyContent="space-around">
           {row.map((col, j) => (
             <Flex key={j} flex={1} justifyContent="space-around">
-              <DayTile
-                date={col}
-                discrete={!col.hasSame(displayDate, 'month')}
-              />
+              <DayTile date={col} discrete={!isSameMonth(displayDate, col)} />
             </Flex>
           ))}
         </Flex>
@@ -58,14 +66,14 @@ function DayGrid({ displayDate, }: DayGridProps) {
   );
 }
 
-function computeDateGrid(date: DateTime): DateTime[][] {
-  date = date.startOf('week');
+function computeDateGrid(date: Date): Date[][] {
+  date = getStartOfWeek(startOfMonth(date));
   const weeks = [];
   for (let week = 0; week < 5; week++) {
     const days = [];
     for (let day = 0; day < 7; day++) {
       days.push(date);
-      date = date.plus({ days: 1 });
+      date = addDays(date, 1);
     }
     weeks.push(days);
   }
@@ -73,7 +81,7 @@ function computeDateGrid(date: DateTime): DateTime[][] {
 }
 
 interface DayTileProps {
-  date: DateTime;
+  date: Date;
   discrete: boolean;
 }
 
@@ -81,18 +89,22 @@ function DayTile({ date, discrete }: DayTileProps) {
   const currentDate = useDate();
   const [store] = useStore();
   const { schedule } = store.settings;
-  const cDate = solarLunar.solar2lunar(date.year, date.month, date.day);
+  const cDate = solarLunar.solar2lunar(
+    getYear(date),
+    getMonth(date) + 1,
+    getDate(date)
+  );
 
   const LunarPart = () => (
     <div className={styles.calendarTileLunarPart}>{cDate.lDay}</div>
   );
   const SolarPart = () => (
-    <div className={styles.calendarTileSolarPart}>{date.day}</div>
+    <div className={styles.calendarTileSolarPart}>{getDate(date)}</div>
   );
 
   return (
     <Tile
-      isToday={currentDate.hasSame(date, 'day')}
+      isToday={isSameDay(date, currentDate)}
       isVegetarianDay={schedule.pred(cDate)}
       isMonth={!discrete}
     >
@@ -100,7 +112,7 @@ function DayTile({ date, discrete }: DayTileProps) {
       <SolarPart />
     </Tile>
   );
-};
+}
 
 type TileProps = {
   isToday: boolean;
@@ -124,6 +136,6 @@ function Tile({ isToday, isVegetarianDay, isMonth, children }: TileProps) {
       {children}
     </Flex>
   );
-};
+}
 
 export default CalendarBody;
