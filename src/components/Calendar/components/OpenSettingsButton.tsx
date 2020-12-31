@@ -8,8 +8,10 @@ interface Props {
 
 function OpenSettingsButton({ onClick }: Props) {
   return (
-    <div className={styles.configurationButton} onClick={onClick}>⚙</div>
+    <div className={styles.configurationButton} onClick={onClick}>
+      ⚙
+    </div>
   );
-};
+}
 
 export default OpenSettingsButton;

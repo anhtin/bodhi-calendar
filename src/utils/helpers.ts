@@ -3,7 +3,7 @@ import {
   createContext,
   Context,
   Dispatch,
-  SetStateAction
+  SetStateAction,
 } from 'react';
 
 type MutableContext<T> = Context<(T | MutableContextUpdate<T>)[]>;
@@ -13,7 +13,7 @@ type MutableContextUpdate<T> = Dispatch<SetStateAction<T>>;
 export function createMutableContext<T>(defaultValue: T | null = null) {
   return createContext([
     defaultValue as T,
-    (() => { }) as MutableContextUpdate<T>
+    (() => null) as MutableContextUpdate<T>,
   ]);
 }
 

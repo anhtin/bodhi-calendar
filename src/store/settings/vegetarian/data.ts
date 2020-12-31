@@ -4,45 +4,41 @@ import { VegetarianSchedule } from './types';
 
 export const defaultVegetarianSchedules: VegetarianSchedule[] = [
   {
-    name: "10 days a month",
-    pred: (date: SolarLunarDate): boolean => (
+    name: '10 days a month',
+    pred: (date: SolarLunarDate): boolean =>
       isVegetarianDay(
         date,
         [1, 8, 14, 15, 18, 23, 24, 28, 29, 30],
         [1, 8, 14, 15, 18, 23, 24, 27, 28, 29]
-      )
-    )
+      ),
   },
   {
-    name: "8 days a month",
-    pred: (date: SolarLunarDate): boolean => (
+    name: '8 days a month',
+    pred: (date: SolarLunarDate): boolean =>
       isVegetarianDay(
         date,
         [1, 8, 14, 15, 18, 23, 24, 30],
         [1, 8, 14, 15, 18, 23, 24, 29]
-      )
-    ),
+      ),
   },
   {
-    name: "6 days a month",
-    pred: (date: SolarLunarDate): boolean => (
-      isVegetarianDay( date,
+    name: '6 days a month',
+    pred: (date: SolarLunarDate): boolean =>
+      isVegetarianDay(
+        date,
         [8, 14, 15, 18, 23, 29, 30],
         [8, 14, 15, 18, 23, 28, 29]
-      )
-    ),
+      ),
   },
   {
-    name: "4 days a month",
-    pred: (date: SolarLunarDate): boolean => (
-      isVegetarianDay(date, [1, 14, 15, 30], [1, 14, 15, 29])
-    ),
+    name: '4 days a month',
+    pred: (date: SolarLunarDate): boolean =>
+      isVegetarianDay(date, [1, 14, 15, 30], [1, 14, 15, 29]),
   },
   {
-    name: "2 days a month",
-    pred: (date: SolarLunarDate): boolean => (
-      isVegetarianDay(date, [1, 15], [1, 15])
-    ),
+    name: '2 days a month',
+    pred: (date: SolarLunarDate): boolean =>
+      isVegetarianDay(date, [1, 15], [1, 15]),
   },
 ];
 
