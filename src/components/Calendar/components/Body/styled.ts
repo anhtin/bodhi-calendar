@@ -2,35 +2,35 @@ import styled from 'styled-components';
 
 import * as colors from 'utils/colors';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.table`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
-export const WeekRow = styled.div`
+export const WeekRow = styled.tr`
   display: flex;
   justify-content: space-around;
   border-bottom: 1px solid black;
 `;
 
-export const WeekDay = styled.h3`
+export const WeekDay = styled.th`
   flex: 1;
   font-size: 1em;
   font-weight: normal;
   text-align: center;
 `;
 
-export const Grid = styled.div`
+export const Grid = styled.tbody`
   padding: 1vh 0;
 `;
 
-export const GridRow = styled.div`
+export const GridRow = styled.tr`
   display: flex;
   justify-content: space-around;
 `;
 
-export const DateWrapper = styled.div`
+export const DateWrapper = styled.td`
   display: flex;
   flex: 1;
   justify-content: space-around;

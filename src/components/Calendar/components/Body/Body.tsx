@@ -28,44 +28,38 @@ interface CalendarBodyProps {
   displayDate: Date;
 }
 
-function CalendarBody(props: CalendarBodyProps) {
+function CalendarBody({ displayDate }: CalendarBodyProps) {
+  const grid = computeDateGrid(displayDate);
   return (
     <Wrapper>
       <WeekdayRow />
-      <DayGrid {...props} />
+      <Grid>
+        {grid.map((row, i) => (
+          <GridRow key={i}>
+            {row.map((col, j) => (
+              <DateWrapper key={j}>
+                <DateTile
+                  date={col}
+                  discrete={!isSameMonth(displayDate, col)}
+                />
+              </DateWrapper>
+            ))}
+          </GridRow>
+        ))}
+      </Grid>
     </Wrapper>
   );
 }
 
 function WeekdayRow() {
   return (
-    <WeekRow>
-      {WEEK_DAYS.map((day, i) => (
-        <WeekDay key={i}>{day}</WeekDay>
-      ))}
-    </WeekRow>
-  );
-}
-
-interface DayGridProps {
-  displayDate: Date;
-}
-
-function DayGrid({ displayDate }: DayGridProps) {
-  const grid = computeDateGrid(displayDate);
-
-  return (
-    <Grid>
-      {grid.map((row, i) => (
-        <GridRow key={i}>
-          {row.map((col, j) => (
-            <DateWrapper key={j}>
-              <DateTile date={col} discrete={!isSameMonth(displayDate, col)} />
-            </DateWrapper>
-          ))}
-        </GridRow>
-      ))}
-    </Grid>
+    <thead>
+      <WeekRow>
+        {WEEK_DAYS.map((day, i) => (
+          <WeekDay key={i}>{day}</WeekDay>
+        ))}
+      </WeekRow>
+    </thead>
   );
 }
 
