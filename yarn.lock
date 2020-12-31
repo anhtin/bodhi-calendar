@@ -2483,6 +2483,11 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+amlich.js@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/amlich.js/-/amlich.js-1.0.6.tgz#6b3c49bccadfc1ce8c708ddfef6ae5c7dbfb4534"
+  integrity sha512-86YQ7GxeF8/VKLJiZBJjDF7NEDS3CwhyBkJZ2uuW9d+0qMpkW+q2nLQ5IWMrd2XOuttc5d/BKjjhnhCWETl//g==
+
 ansi-colors@^3.0.0:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
@@ -11176,11 +11181,6 @@ sockjs@0.3.20:
     faye-websocket "^0.10.0"
     uuid "^3.4.0"
     websocket-driver "0.6.5"
-
-solarlunar@^2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/solarlunar/-/solarlunar-2.0.7.tgz#b323e156028fa5ffcb44d28b64ef7a2e390ccff9"
-  integrity sha512-2SfuCCgAAxFU5MTMYuKGbRgRLcPTJQf3azMEw/GmBpHXA7N2eAQJStSqktZJjnq4qRCboBPnqEB866+PCregag==
 
 sort-keys@^1.0.0:
   version "1.1.2"

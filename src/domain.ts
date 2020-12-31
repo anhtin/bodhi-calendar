@@ -1,5 +1,5 @@
 import { addDays, getDate, getMonth, getYear } from 'date-fns';
-import solarLunar from 'solarlunar';
+import { computeDateToLunarDate, LunarDate } from 'amlich.js';
 
 import { getStartOfWeek } from 'utils/date';
 import { VegetarianSchedule } from 'store';
@@ -58,15 +58,25 @@ function createDay(
 ): Day {
   const year = getYear(date);
   const month = getMonth(date);
-  const lunarDay = solarLunar.solar2lunar(year, month + 1, getDate(date));
+  const lunarDate = computeDateToLunarDate(getDate(date), month + 1, year, 7);
+  const has30Days = of30Days(lunarDate, date);
   return {
     solarDate: date,
-    lunarDay: lunarDay.lDay,
+    lunarDay: lunarDate.lunarDay,
     solarDay: getDate(date),
-    isVegetarianDay: schedule.pred(
-      lunarDay.lDay,
-      solarLunar.monthDays(year, month + 1) === 30
-    ),
+    isVegetarianDay: schedule.pred(lunarDate.lunarDay, has30Days),
     isInMonth,
   };
+}
+
+function of30Days(lunarDate: LunarDate, gregorianDate: Date): boolean {
+  const diff = 30 - lunarDate.lunarDay;
+  const deltaGregorianDate = addDays(gregorianDate, diff);
+  const endLunarDate = computeDateToLunarDate(
+    getDate(deltaGregorianDate),
+    getMonth(deltaGregorianDate) + 1,
+    getYear(deltaGregorianDate),
+    1
+  );
+  return endLunarDate.lunarDay === 30;
 }
