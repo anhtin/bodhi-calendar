@@ -4,20 +4,21 @@ import { Wrapper, Button, TitleWrapper, Year, Month } from './styled';
 import { formatDate } from 'utils/date';
 
 type Props = {
-  displayDate: Date;
+  year: number;
+  month: number;
   onPrevMonth: () => void;
   onNextMonth: () => void;
 };
 
-function Header({ displayDate, onPrevMonth, onNextMonth }: Props) {
-  const month = formatDate(displayDate, 'LLLL');
-  const year = formatDate(displayDate, 'yyyy');
+function Header({ year, month, onPrevMonth, onNextMonth }: Props) {
+  const formattedYear = formatDate(new Date(year, 0, 1), 'yyyy');
+  const formattedMonth = formatDate(new Date(2000, month, 1), 'LLLL');
   return (
     <Wrapper>
       <Button onClick={onPrevMonth}>&lt;</Button>
       <TitleWrapper>
-        <Year>{year}</Year>
-        <Month>{month}</Month>
+        <Year>{formattedYear}</Year>
+        <Month>{formattedMonth}</Month>
       </TitleWrapper>
       <Button onClick={onNextMonth}>&gt;</Button>
     </Wrapper>

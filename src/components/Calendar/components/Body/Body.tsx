@@ -1,17 +1,8 @@
 import React, { HTMLProps } from 'react';
-import {
-  isSameDay,
-  isSameMonth,
-  startOfMonth,
-  addDays,
-  getDate,
-  getMonth,
-  getYear,
-} from 'date-fns';
-import solarLunar from 'solarlunar';
+import { isSameDay } from 'date-fns';
 
-import { useDate, useStore } from 'hooks';
-import { getStartOfWeek, WEEK_DAYS } from 'utils/date';
+import { useDate } from 'hooks';
+import { WEEK_DAYS } from 'utils/date';
 import {
   Wrapper,
   WeekRow,
@@ -23,25 +14,22 @@ import {
   SolarPart,
   TileWrapper,
 } from './styled';
+import { Week, Day } from '../../../../domain';
 
 type CalendarBodyProps = {
-  displayDate: Date;
+  weeks: Array<Week>;
 };
 
-function CalendarBody({ displayDate }: CalendarBodyProps) {
-  const grid = computeDateGrid(displayDate);
+function CalendarBody({ weeks }: CalendarBodyProps) {
   return (
     <Wrapper>
       <WeekdayRow />
       <Grid>
-        {grid.map((row, i) => (
+        {weeks.map((week, i) => (
           <GridRow key={i}>
-            {row.map((col, j) => (
+            {week.map((day, j) => (
               <DateWrapper key={j}>
-                <DateTile
-                  date={col}
-                  discrete={!isSameMonth(displayDate, col)}
-                />
+                <DayTile day={day} />
               </DateWrapper>
             ))}
           </GridRow>
@@ -63,43 +51,20 @@ function WeekdayRow() {
   );
 }
 
-function computeDateGrid(date: Date): Date[][] {
-  date = getStartOfWeek(startOfMonth(date));
-  const weeks = [];
-  for (let week = 0; week < 5; week++) {
-    const days = [];
-    for (let day = 0; day < 7; day++) {
-      days.push(date);
-      date = addDays(date, 1);
-    }
-    weeks.push(days);
-  }
-  return weeks;
-}
-
-type DateTileProps = {
-  date: Date;
-  discrete: boolean;
+type DayTileProps = {
+  day: Day;
 };
 
-function DateTile({ date, discrete }: DateTileProps) {
-  const currentDate = useDate();
-  const [store] = useStore();
-  const { schedule } = store.settings;
-  const cDate = solarLunar.solar2lunar(
-    getYear(date),
-    getMonth(date) + 1,
-    getDate(date)
-  );
-
+function DayTile({ day }: DayTileProps) {
+  const date = useDate();
   return (
     <Tile
-      isToday={isSameDay(date, currentDate)}
-      isVegetarianDay={schedule.pred(cDate)}
-      isMonth={!discrete}
+      isToday={isSameDay(day.solarDate, date)}
+      isVegetarianDay={day.isVegetarianDay}
+      isMonth={day.isInMonth}
     >
-      <LunarPart aria-label="Lunar date">{cDate.lDay}</LunarPart>
-      <SolarPart aria-label="Solar date">{getDate(date)}</SolarPart>
+      <LunarPart aria-label="Lunar date">{day.lunarDay}</LunarPart>
+      <SolarPart aria-label="Solar date">{day.solarDay}</SolarPart>
     </Tile>
   );
 }
