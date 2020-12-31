@@ -24,9 +24,9 @@ import {
   TileWrapper,
 } from './styled';
 
-interface CalendarBodyProps {
+type CalendarBodyProps = {
   displayDate: Date;
-}
+};
 
 function CalendarBody({ displayDate }: CalendarBodyProps) {
   const grid = computeDateGrid(displayDate);
@@ -77,10 +77,10 @@ function computeDateGrid(date: Date): Date[][] {
   return weeks;
 }
 
-interface DateTileProps {
+type DateTileProps = {
   date: Date;
   discrete: boolean;
-}
+};
 
 function DateTile({ date, discrete }: DateTileProps) {
   const currentDate = useDate();

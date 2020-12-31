@@ -4,20 +4,20 @@ import { getVegetarianSchedule } from './settings/vegetarian';
 import { getVersion, setVersion } from './version';
 import { saveSettings, Settings, loadSettings } from './settings';
 
-export interface Store {
+export type Store = {
   settings: Settings;
   version: string;
-}
+};
 
 export function resetStore() {
-  const store = createInitialStore()
+  const store = createInitialStore();
   saveStore(store);
 }
 
 function createInitialStore(): Store {
   return {
     settings: {
-      schedule: getVegetarianSchedule()
+      schedule: getVegetarianSchedule(),
     },
     version: getAppVersion(),
   };
@@ -37,7 +37,7 @@ export function loadStore(): Store {
   return {
     settings: loadSettings(),
     version: getVersion(),
-  }
+  };
 }
 
 function migrateStoreIfNeccessary(): void {

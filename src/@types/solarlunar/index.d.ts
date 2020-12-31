@@ -1,5 +1,5 @@
 declare module 'solarlunar' {
-  export interface SolarLunar {
+  export type SolarLunar = {
     lunarInfo: number[];
     solarMonth: number[];
     gan: string[];
@@ -23,10 +23,15 @@ declare module 'solarlunar' {
     toChinaDay: (day: number) => string;
     getAnimal: (year: number) => string;
     solar2lunar: (year: number, month: number, day: number) => SolarLunarDate;
-    lunar2solar: (year: number, month: number, day: number, isLeapMonth: boolean) => SolarLunarDate;
-  }
+    lunar2solar: (
+      year: number,
+      month: number,
+      day: number,
+      isLeapMonth: boolean
+    ) => SolarLunarDate;
+  };
 
-  export interface SolarLunarDate {
+  export type SolarLunarDate = {
     lYear: number;
     lMonth: number;
     lDay: number;
@@ -43,8 +48,9 @@ declare module 'solarlunar' {
     isLeap: boolean;
     nWeek: number;
     term: string;
-  }
+  };
 
   const solarLunar: SolarLunar;
+
   export default solarLunar;
 }

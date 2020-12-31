@@ -5,15 +5,18 @@ import { logError, initializeLogging } from 'utils/logging';
 import { resetLocal, navigateTo } from 'utils/browser';
 import { InvalidAppVersion } from 'store';
 
-interface ErrorBoundaryProps {
+type ErrorBoundaryProps = {
   children: ReactNode;
-}
+};
 
-interface ErrorBoundaryState {
+type ErrorBoundaryState = {
   error: Error | null;
-}
+};
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = {
@@ -42,10 +45,10 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 
     if (error instanceof InvalidAppVersion) {
       resetLocal();
-      return <RedirectionErrorView />
+      return <RedirectionErrorView />;
     }
 
-    return <GenericErrorView />
+    return <GenericErrorView />;
   }
 }
 
@@ -58,9 +61,9 @@ function GenericErrorView() {
   );
 }
 
-interface RedirectionErrorViewProps {
+type RedirectionErrorViewProps = {
   targetUrl?: string;
-}
+};
 
 function RedirectionErrorView({ targetUrl = '.' }: RedirectionErrorViewProps) {
   navigateTo(targetUrl);
@@ -73,9 +76,9 @@ function RedirectionErrorView({ targetUrl = '.' }: RedirectionErrorViewProps) {
   );
 }
 
-interface ContainerProps {
+type ContainerProps = {
   children: ReactNode;
-}
+};
 
 function Container({ children }: ContainerProps) {
   return (
@@ -92,16 +95,12 @@ function Container({ children }: ContainerProps) {
   );
 }
 
-interface HeaderProps {
+type HeaderProps = {
   title: string;
-}
+};
 
 function Header({ title }: HeaderProps) {
-  return (
-    <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>
-      {title}
-    </h1>
-  );
+  return <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>{title}</h1>;
 }
 
 export default ErrorBoundary;

@@ -1,8 +1,12 @@
-import { getVegetarianSchedule, setVegetarianSchedule, VegetarianSchedule } from './vegetarian';
+import {
+  getVegetarianSchedule,
+  setVegetarianSchedule,
+  VegetarianSchedule,
+} from './vegetarian';
 
-export interface Settings {
+export type Settings = {
   schedule: VegetarianSchedule;
-}
+};
 
 export function saveSettings(settings: Settings) {
   setVegetarianSchedule(settings.schedule);

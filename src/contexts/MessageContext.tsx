@@ -2,17 +2,17 @@ import React, { ReactNode, useState } from 'react';
 
 import { createMutableContext } from 'utils/helpers';
 
-export interface Message {
+export type Message = {
   title: string;
   content: ReactNode;
   status: MessageStatus;
-}
+};
 
 type MessageStatus = 'INFO' | 'ALERT';
 
-interface Props {
+type Props = {
   children: ReactNode;
-}
+};
 
 const MessageContext = createMutableContext<Message[]>();
 

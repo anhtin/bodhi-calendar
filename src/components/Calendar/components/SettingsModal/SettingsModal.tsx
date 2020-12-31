@@ -11,10 +11,10 @@ import {
 } from 'store';
 import { Form, Label, Select } from './styled';
 
-interface Props {
+type Props = {
   visible: boolean;
   onHide: () => void;
-}
+};
 
 function SettingsModal({ visible, onHide }: Props) {
   const [store, setStore] = useStore();
@@ -31,10 +31,10 @@ function SettingsModal({ visible, onHide }: Props) {
   );
 }
 
-interface VegetarianScheduleSelectProps {
+type VegetarianScheduleSelectProps = {
   settings: Settings;
   onUpdate: (settings: Settings) => void;
-}
+};
 
 function VegetarianScheduleSelect({
   settings,
