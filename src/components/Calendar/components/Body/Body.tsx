@@ -98,8 +98,8 @@ function DateTile({ date, discrete }: DateTileProps) {
       isVegetarianDay={schedule.pred(cDate)}
       isMonth={!discrete}
     >
-      <LunarPart>{cDate.lDay}</LunarPart>
-      <SolarPart>{getDate(date)}</SolarPart>
+      <LunarPart aria-label="Lunar date">{cDate.lDay}</LunarPart>
+      <SolarPart aria-label="Solar date">{getDate(date)}</SolarPart>
     </Tile>
   );
 }

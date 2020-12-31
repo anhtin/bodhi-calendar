@@ -29,12 +29,12 @@ export const TitleWrapper = styled.div`
   flex: 1;
 `;
 
-export const Year = styled.h2`
+export const Year = styled.h1`
   font-size: 1em;
   font-weight: normal;
 `;
 
-export const Month = styled.h1`
+export const Month = styled.h2`
   font-size: 1.5em;
   font-weight: bold;
 `;
