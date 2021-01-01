@@ -5,7 +5,10 @@ import * as colors from 'utils/colors';
 export const StyleOverrides = createGlobalStyle`
   .ReactModal__Overlay {
     position: fixed;
-    inset: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: rgba(10, 10, 10, 0.86);
     opacity: 0;
     transition: opacity 0.3s ease-out;
@@ -31,5 +34,6 @@ export const StyleOverrides = createGlobalStyle`
     border: 1px solid ${colors.PRIMARY};
     transform: translate(-50%, -50%);
     overflow: auto;
+    -webkit-overflow-scrolling: initial !important;
   }
 `;
