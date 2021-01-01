@@ -1,6 +1,6 @@
 {
   "name": "bodhi-calendar-v2",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": true,
   "homepage": "https://anhtin.github.io/bodhi-calendar",
   "scripts": {
