@@ -5,11 +5,9 @@ const userLocale = getUserLocale();
 
 const locale = () => require(`date-fns/locale/${userLocale}`).default;
 
-export const WEEK_DAYS =
-  locale() &&
-  [0, 1, 2, 3, 4, 5, 6].map((day) =>
-    locale().localize.day(day, { width: 'abbreviated' })
-  );
+export const WEEK_DAYS: Array<string> = [0, 1, 2, 3, 4, 5, 6].map((day) =>
+  locale().localize.day(day, { width: 'abbreviated' })
+);
 
 export function formatDate(date: Date, pattern: string): string {
   return format(date, pattern, { locale: locale() });
