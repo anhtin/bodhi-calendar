@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/bodhi-calendar/static/js/main.16bcbf2a.chunk.js",
-    "main.js.map": "/bodhi-calendar/static/js/main.16bcbf2a.chunk.js.map",
+    "main.js": "/bodhi-calendar/static/js/main.278e94da.chunk.js",
+    "main.js.map": "/bodhi-calendar/static/js/main.278e94da.chunk.js.map",
     "runtime-main.js": "/bodhi-calendar/static/js/runtime-main.844a4154.js",
     "runtime-main.js.map": "/bodhi-calendar/static/js/runtime-main.844a4154.js.map",
-    "static/js/2.046dddfb.chunk.js": "/bodhi-calendar/static/js/2.046dddfb.chunk.js",
-    "static/js/2.046dddfb.chunk.js.map": "/bodhi-calendar/static/js/2.046dddfb.chunk.js.map",
+    "static/js/2.be85c373.chunk.js": "/bodhi-calendar/static/js/2.be85c373.chunk.js",
+    "static/js/2.be85c373.chunk.js.map": "/bodhi-calendar/static/js/2.be85c373.chunk.js.map",
     "index.html": "/bodhi-calendar/index.html",
-    "static/js/2.046dddfb.chunk.js.LICENSE.txt": "/bodhi-calendar/static/js/2.046dddfb.chunk.js.LICENSE.txt",
+    "static/js/2.be85c373.chunk.js.LICENSE.txt": "/bodhi-calendar/static/js/2.be85c373.chunk.js.LICENSE.txt",
     "static/media/logo.a2373f5a.svg": "/bodhi-calendar/static/media/logo.a2373f5a.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.844a4154.js",
-    "static/js/2.046dddfb.chunk.js",
-    "static/js/main.16bcbf2a.chunk.js"
+    "static/js/2.be85c373.chunk.js",
+    "static/js/main.278e94da.chunk.js"
   ]
 }
