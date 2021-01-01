@@ -39,7 +39,7 @@ function createWeeks(
 ): Array<Week> {
   let incDate = getStartOfWeek(new Date(year, month, 1));
   const weeks: Array<Week> = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     const week: Week = [];
     for (let j = 0; j < 7; j++, incDate = addDays(incDate, 1)) {
       const isInMonth = getMonth(incDate) === month;
