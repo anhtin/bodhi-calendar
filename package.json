@@ -33,7 +33,6 @@
   "dependencies": {
     "@sentry/browser": "5.6.3",
     "amlich.js": "1.0.6",
-    "bloomer": "^0.6.5",
     "date-fns": "^2.16.1",
     "get-user-locale": "^1.4.0",
     "react": "^16.8.6",
