@@ -26,7 +26,7 @@ export const defaultVegetarianSchedules: VegetarianSchedule[] = [
     pred: (day: number, has30Days: boolean): boolean =>
       isVegetarianDay(
         day,
-        has30Days ? [1, 8, 14, 15, 29, 30] : [1, 8, 14, 15, 28, 29]
+        has30Days ? [1, 8, 14, 15, 23, 30] : [1, 8, 14, 15, 23, 29]
       ),
   },
   {
