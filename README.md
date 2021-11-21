@@ -1,16 +1,29 @@
 # Bodhi Calendar (Vietnamese Edition)
 
-Keep track of which days you need to be a vegetarian!
+Keep track of your vegetarian days!
 
-Lay-followers of Buddhism may choose to follow a vegetarian schedule, where
-they refrain from eating meat on specific days of the year. One problem,
-however, is that these days are dictated by the lunar calendar, which makes
-it difficult for those who are only accustomed to follow the lunar calendar
-in their day-to-day life. As such, the goal of this web application, _Bodhi
-Calendar_, is to help such followers with keeping track of the vegetarian
-dates.
 
-**Note**: This web app is designed for Vietnamese buddhists, as
-such, the Vietnamese lunisolar calendar is used (instead of e.g. the chinese
-calendar). In the future, a new version of the app might support multiple
-variants of the chinese calendar.
+## Motivation
+
+Some lay-followers of Buddhism are _partial vegeterians_. This means that they
+avoid eating meat on very specific days of the year. These days, however, are
+largly determined by some variant of the Chinese lunisolar calendar.
+
+Vietnamese buddhists typically use the Vietnamese lunisolar calendar to
+determine their _vegetarian days_. However, their civic calendar is usually a
+solar one, e.g. the Gregorian calendar. As such, it can be difficult to keep
+track of their vegetarian days.
+
+Additionally, many lay-followers also struggle with remembering which lunisolar
+dates are considered as vegeterian days. It doesn't help that there are 
+discrepancies in practice between partial vegetarians. Luckily enough, if you
+just selected a set of vegetarian days, their occurence follow a strict and
+predictable monthly pattern.
+
+
+## Intended Audience
+
+This web app was designed with Vietnamese buddhists in mind. As such, the
+Vietnamese calendar is used instead of the Chinese calendar or any other
+variants. In the future, a new version of the app might support multiple
+variants - if such a need presents itself.
