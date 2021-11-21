@@ -2,13 +2,10 @@ import React, { ReactNode } from 'react';
 
 import Calendar from 'components/Calendar';
 import ErrorBoundary from 'components/ErrorBoundary';
-import MessageBar from 'components/MessageBar';
-import ServiceWorker from 'components/ServiceWorker';
 import { DateProvider } from 'contexts/DateContext';
 import { StoreProvider } from 'contexts/StoreContext';
 import logo from 'assets/images/logo.svg';
 
-import { MessageProvider } from 'contexts';
 import { useStore } from 'hooks';
 import GlobalStyle from './GlobalStyle';
 import { Wrapper } from './styled';
@@ -19,10 +16,8 @@ const App = () => {
       <GlobalStyle />
       <ErrorBoundary>
         <Provider>
-          <ServiceWorker>
-            <Main />
-            <Footer />
-          </ServiceWorker>
+          <Main />
+          <Footer />
         </Provider>
       </ErrorBoundary>
     </Wrapper>
@@ -31,18 +26,15 @@ const App = () => {
 
 function Provider({ children }: { children: ReactNode }) {
   return (
-    <MessageProvider>
-      <StoreProvider>
-        <DateProvider>{children}</DateProvider>
-      </StoreProvider>
-    </MessageProvider>
+    <StoreProvider>
+      <DateProvider>{children}</DateProvider>
+    </StoreProvider>
   );
 }
 
 function Main() {
   return (
     <main>
-      <MessageBar />
       <Calendar />
     </main>
   );
