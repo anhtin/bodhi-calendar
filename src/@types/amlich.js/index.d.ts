@@ -1,4 +1,10 @@
 declare module 'amlich.js' {
+  export type SolarDate = {
+    day: number;
+    month: number;
+    year: number;
+  };
+
   export type LunarDate = {
     lunarDay: number;
     lunarMonth: number;
@@ -19,5 +25,5 @@ declare module 'amlich.js' {
     year: number,
     isLeapYear: boolean,
     timezone: number
-  ): Date;
+  ): SolarDate;
 }
