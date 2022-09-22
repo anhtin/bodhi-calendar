@@ -12,7 +12,7 @@ export type BodhiCalendarDate = {
 export class BodhiCalendarService {
   constructor(
     private readonly settingsRepository: SettingsRepository,
-    private readonly vegetarianScheduleRepository: VegetarianScheduleRepository // private readonly localeProvider: LocaleProvider
+    private readonly vegetarianScheduleRepository: VegetarianScheduleRepository
   ) {}
 
   getDatesBetween(startDate: Date, endDate: Date): Array<BodhiCalendarDate> {
