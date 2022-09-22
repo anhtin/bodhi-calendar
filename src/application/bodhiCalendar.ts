@@ -16,6 +16,9 @@ export class BodhiCalendarService {
   ) {}
 
   getDatesBetween(startDate: Date, endDate: Date): Array<BodhiCalendarDate> {
+    if (isAfter(startDate, endDate))
+      throw new Error('start date cannot be after end date');
+
     const dates = [];
     let current = startDate;
     do {
