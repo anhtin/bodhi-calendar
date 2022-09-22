@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/bodhi-calendar/static/js/main.301c7f3a.js",
+    "main.js": "/bodhi-calendar/static/js/main.0bc614c2.js",
     "static/js/4682.e1660d97.chunk.js": "/bodhi-calendar/static/js/4682.e1660d97.chunk.js",
     "static/js/779.37af07ef.chunk.js": "/bodhi-calendar/static/js/779.37af07ef.chunk.js",
     "static/js/7232.0ecdade6.chunk.js": "/bodhi-calendar/static/js/7232.0ecdade6.chunk.js",
@@ -98,7 +98,7 @@
     "static/js/6567.7339a6d7.chunk.js": "/bodhi-calendar/static/js/6567.7339a6d7.chunk.js",
     "logo.svg": "/bodhi-calendar/a2373f5a7ef74693ba34bc7e72142c65.svg",
     "index.html": "/bodhi-calendar/index.html",
-    "main.301c7f3a.js.map": "/bodhi-calendar/static/js/main.301c7f3a.js.map",
+    "main.0bc614c2.js.map": "/bodhi-calendar/static/js/main.0bc614c2.js.map",
     "4682.e1660d97.chunk.js.map": "/bodhi-calendar/static/js/4682.e1660d97.chunk.js.map",
     "779.37af07ef.chunk.js.map": "/bodhi-calendar/static/js/779.37af07ef.chunk.js.map",
     "7232.0ecdade6.chunk.js.map": "/bodhi-calendar/static/js/7232.0ecdade6.chunk.js.map",
@@ -196,6 +196,6 @@
     "6567.7339a6d7.chunk.js.map": "/bodhi-calendar/static/js/6567.7339a6d7.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.301c7f3a.js"
+    "static/js/main.0bc614c2.js"
   ]
 }
