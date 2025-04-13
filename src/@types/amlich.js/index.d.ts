@@ -16,7 +16,7 @@ declare module 'amlich.js' {
     day: number,
     month: number,
     year: number,
-    timezone: number
+    timezone: number,
   ): LunarDate;
 
   export function computeDateFromLunarDate(
@@ -24,6 +24,6 @@ declare module 'amlich.js' {
     month: number,
     year: number,
     isLeapYear: boolean,
-    timezone: number
+    timezone: number,
   ): SolarDate;
 }
