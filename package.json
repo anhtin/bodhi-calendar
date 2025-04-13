@@ -1,7 +1,7 @@
 {
   "name": "bodhi-calendar",
   "private": true,
-  "version": "2025-04-13.1",
+  "version": "2025-04-13.2",
   "type": "module",
   "homepage": "https://anhtin.github.io/bodhi-calendar",
   "scripts": {
