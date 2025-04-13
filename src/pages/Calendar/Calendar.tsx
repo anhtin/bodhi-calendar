@@ -19,7 +19,7 @@ import {
 } from '@/data/vegetarian';
 
 import { is30DayLunarMonth } from './helpers/is30DayLunarMonth';
-import { resolveLunarDate } from './helpers/resolveLunarDate';
+import { resolveLunarDate } from './helpers/lunisolar';
 import { resolveMonthName } from './helpers/resolveMonthName';
 import { resolveWeekDayNames } from './helpers/resolveWeekDayNames';
 import { resolveWeeksInMonthView } from './helpers/resolveWeeksInMonthView';
@@ -147,7 +147,7 @@ type DayCellProps = {
 
 function DayCell({ day, currentMonth, vegetarianSchedule }: DayCellProps) {
   const lunarDate = resolveLunarDate(day);
-  const vegetarianDays = is30DayLunarMonth(day)
+  const vegetarianDays = is30DayLunarMonth(lunarDate)
     ? vegetarianSchedule.for30DayMonths
     : vegetarianSchedule.for29DayMonths;
 

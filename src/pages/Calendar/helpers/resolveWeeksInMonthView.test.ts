@@ -11,7 +11,7 @@ const testInputs = [
   [2, 2025],
 ];
 
-describe('resolveWeeksInMonthView', () => {
+describe(resolveWeeksInMonthView.name, () => {
   test.each(testInputs)(
     'returns days in chronological order (monthIndex=%i, year=%i)',
     (monthIndex, year) => {
