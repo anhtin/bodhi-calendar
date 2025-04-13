@@ -6,7 +6,7 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig(({ mode }) => ({
-  base: '/bodhi-calendar/',
+  base: mode === 'development' ? undefined : '/bodhi-calendar/',
   build: {
     sourcemap: true,
   },
