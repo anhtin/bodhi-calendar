@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { sentryVitePlugin } from '@sentry/vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react-swc';
@@ -30,5 +31,8 @@ export default defineConfig(({ mode }) => ({
   },
   server: {
     host: false,
+  },
+  test: {
+    watch: false,
   },
 }));

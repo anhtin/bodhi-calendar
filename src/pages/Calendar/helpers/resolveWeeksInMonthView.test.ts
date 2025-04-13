@@ -1,5 +1,6 @@
 import { differenceInMilliseconds, getDaysInMonth } from 'date-fns';
 import { nb as locale } from 'date-fns/locale';
+import { describe, expect, test } from 'vitest';
 
 import { resolveWeeksInMonthView } from './resolveWeeksInMonthView';
 
