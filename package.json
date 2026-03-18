@@ -12,7 +12,7 @@
     "format": "prettier --write src/**/*.{ts,tsx}",
     "build:local": "tsc -b && vite build --mode local-build",
     "preview": "vite preview",
-    "tag-release": "scripts/tag-release.sh"
+    "deploy": "scripts/tag-release.sh"
   },
   "dependencies": {
     "@sentry/react": "^10.44.0",
