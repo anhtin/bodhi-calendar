@@ -8,6 +8,8 @@ import { Settings } from '@/pages/Settings';
 
 const version = import.meta.env.VITE_APP_VERSION ?? 'Unspecified';
 
+const CHUNK_RELOAD_KEY = 'chunk-reload-attempted';
+
 export function App() {
   const [page, setPage] = useState<'calendar' | 'settings'>('calendar');
 
@@ -16,6 +18,14 @@ export function App() {
       <main className="p-[2vh]">
         <Sentry.ErrorBoundary
           fallback={<p className="text-center">Error! 😞</p>}
+          onError={(error) => {
+            if (error instanceof TypeError && /importing a module script failed|load failed/i.test(error.message)) {
+              if (!sessionStorage.getItem(CHUNK_RELOAD_KEY)) {
+                sessionStorage.setItem(CHUNK_RELOAD_KEY, '1');
+                window.location.reload();
+              }
+            }
+          }}
         >
           {page === 'calendar' && <Calendar />}
           {page === 'settings' && <Settings />}
