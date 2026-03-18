@@ -7,6 +7,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(({ mode }) => ({
   base: mode === 'development' ? undefined : '/bodhi-calendar/',
+  define: {
+    'import.meta.env.VITE_APP_VERSION': JSON.stringify(process.env.GITHUB_REF_NAME),
+  },
   build: {
     sourcemap: true,
   },

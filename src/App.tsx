@@ -6,7 +6,7 @@ import logo from '@/assets/logo.svg';
 import { Calendar } from '@/pages/Calendar';
 import { Settings } from '@/pages/Settings';
 
-import { version } from '../package.json';
+const version = import.meta.env.VITE_APP_VERSION ?? 'Unspecified';
 
 export function App() {
   const [page, setPage] = useState('calendar');
