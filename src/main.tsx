@@ -12,7 +12,7 @@ const root = createRoot(container, {
     console.error('Uncaught error', error, errorInfo.componentStack);
   }),
   onCaughtError: Sentry.reactErrorHandler((error, errorInfo) => {
-    console.warn('Caugh error', error, errorInfo.componentStack);
+    console.warn('Caught error', error, errorInfo.componentStack);
   }),
   onRecoverableError: Sentry.reactErrorHandler(),
 });

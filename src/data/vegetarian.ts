@@ -33,7 +33,7 @@ const SCHEDULES: VegetarianSchedule[] = [
 ];
 
 export function resolveVegetarianSchedule(id: number) {
-  return SCHEDULES[id];
+  return SCHEDULES[id] ?? SCHEDULES[0];
 }
 
 export function getAllVegetarianSchedules(): VegetarianSchedule[] {

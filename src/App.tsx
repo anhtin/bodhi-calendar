@@ -9,7 +9,7 @@ import { Settings } from '@/pages/Settings';
 const version = import.meta.env.VITE_APP_VERSION ?? 'Unspecified';
 
 export function App() {
-  const [page, setPage] = useState('calendar');
+  const [page, setPage] = useState<'calendar' | 'settings'>('calendar');
 
   return (
     <>

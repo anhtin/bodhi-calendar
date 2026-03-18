@@ -28,8 +28,7 @@ export function resolveSettings(): Settings {
   if (settingsJson == null) return DEFAULT_SETTINGS;
 
   const settings = JSON.parse(settingsJson);
-  const migratedSettings = migrateSettings(settings);
-  return migratedSettings;
+  return migrateSettings(settings);
 }
 
 function migrateSettings(settings: unknown): Settings {

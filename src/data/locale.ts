@@ -16,7 +16,7 @@ export async function resolveLocale(): Promise<Locale> {
           return (await import('date-fns/locale/vi')).vi;
       }
     } catch {
-      return enUS;
+      continue;
     }
   }
 
