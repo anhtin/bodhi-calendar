@@ -12,7 +12,7 @@
     "format": "prettier --write src/**/*.{ts,tsx}",
     "build": "tsc -b && vite build --mode local-build",
     "preview": "vite preview",
-    "predeploy": "npm run lint && npm run test && npm run build",
+    "predeploy": "pnpm run lint && pnpm run test && pnpm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
@@ -31,6 +31,7 @@
     "@eslint/js": "^9.21.0",
     "@sentry/vite-plugin": "^3.3.1",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/node": "^25.5.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react-swc": "^3.8.0",
