@@ -166,17 +166,16 @@ function DayCell({ day, currentMonth, vegetarianSchedule }: DayCellProps) {
       <div
         aria-label={label}
         className={classNames(
-          'flex flex-col w-[2em] h-[2em]',
+          'relative flex flex-col justify-center items-center w-[2.2em] h-[2.2em]',
           isToday(day) && 'bg-(--foreground) rounded-full font-bold',
           isToday(day) && !isVegetarianDay && 'text-(--background)',
           !isCurrentMonth && 'opacity-[0.5]',
           isVegetarianDay && 'text-[#a1b182] font-bold',
         )}
       >
-        <span className="text-[0.5em] translate-y-[0.2em]">
-          {lunarDate.lunarDay}
-        </span>
-        <span className="translate-y-[-0.3em]">{getDate(day)}</span>
+        {isVegetarianDay && <span aria-hidden="true" className="absolute top-[0.3em] text-[0.3em] leading-none">•</span>}
+        <span className="text-[0.5em] leading-none">{lunarDate.lunarDay}</span>
+        <span className="leading-none">{getDate(day)}</span>
       </div>
     </div>
   );
