@@ -3,13 +3,9 @@
 :root {
   --background: #fff9ed;
   --foreground: #8f6e64;
-  --vegetarian: #a1b182;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-vegetarian: var(--vegetarian);
+  --vegetarian: #7a8a4e;
+  --surface: #ede5d8;
+  --border: #ddd5cc;
 }
 
 body {

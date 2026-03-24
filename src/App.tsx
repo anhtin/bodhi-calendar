@@ -63,8 +63,8 @@ function Tab({ active, children, onClick }: TabProps) {
     <button
       aria-current={active ? 'page' : undefined}
       className={classNames(
-        'flex-1 border border-[#dbdbdb] hover:bg-[#f6f6ff]',
-        active ? 'bg-[#f6f6ff]' : 'bg-white',
+        'flex-1 border border-(--border) hover:bg-(--surface)',
+        active ? 'bg-(--surface)' : 'bg-white',
       )}
       style={{ height: 'min(80px, max(15vw, 15vh))' }}
       onClick={onClick}

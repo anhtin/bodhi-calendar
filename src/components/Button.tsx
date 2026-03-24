@@ -9,7 +9,7 @@ export function Button({
   return (
     <button
       className={classNames(
-        'bg-white hover:bg-[#f6f6ff] border border-[#dbdbdb] rounded-sm px-[1em] py-[0.75em] h-fit',
+        'bg-white hover:bg-(--surface) border border-(--border) rounded-sm px-[1em] py-[0.75em] h-fit',
         className,
       )}
       {...rest}

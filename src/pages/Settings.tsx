@@ -32,7 +32,7 @@ export function Settings() {
       <form className="flex flex-col">
         <label className="text-lg font-bold mb-[0.25em]">Schedule</label>
         <select
-          className="bg-white p-[0.5em] border border-[#3b3b3b] rounded-sm"
+          className="bg-white p-[0.5em] border border-(--border) rounded-sm"
           value={settings.vegetarian.scheduleId}
           onChange={(e) => handleSelect(+e.target.value)}
         >
