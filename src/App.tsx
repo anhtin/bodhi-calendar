@@ -32,7 +32,7 @@ export function App() {
         </Sentry.ErrorBoundary>
       </main>
       <aside className="fixed left-0 bottom-0 w-dvw">
-        <nav className="flex">
+        <nav aria-label="Main navigation" className="flex">
           <Tab active={page === 'calendar'} onClick={() => setPage('calendar')}>
             Calendar
           </Tab>
@@ -61,6 +61,7 @@ type TabProps = {
 function Tab({ active, children, onClick }: TabProps) {
   return (
     <button
+      aria-current={active ? 'page' : undefined}
       className={classNames(
         'flex-1 border border-[#dbdbdb] hover:bg-[#f6f6ff]',
         active ? 'bg-[#f6f6ff]' : 'bg-white',

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import {
   addMonths,
+  format,
   getDate,
   getMonth,
   getYear,
@@ -82,14 +83,14 @@ function Header({
 }: HeaderProps) {
   return (
     <header className="flex justify-between items-center">
-      <Button className="text-[0.75em]" onClick={onPreviousMonth}>
+      <Button aria-label="Previous month" className="text-[0.75em]" onClick={onPreviousMonth}>
         {'<'}
       </Button>
       <div className="flex flex-col">
         <h1>{year}</h1>
         <h2 className="font-bold text-[1.5em]">{monthName}</h2>
       </div>
-      <Button className="text-[0.75em]" onClick={onNextMonth}>
+      <Button aria-label="Next month" className="text-[0.75em]" onClick={onNextMonth}>
         {'>'}
       </Button>
     </header>
@@ -110,11 +111,11 @@ function Body({
   vegetarianSchedule,
 }: BodyProps) {
   return (
-    <table className="w-full table-fixed">
+    <table aria-label="Calendar" className="w-full table-fixed">
       <thead className="border-b">
         <tr>
           {weekDayNames.map((x, i) => (
-            <th key={i} className="font-normal">
+            <th key={i} scope="col" className="font-normal">
               {x}
             </th>
           ))}
@@ -153,9 +154,17 @@ function DayCell({ day, currentMonth, vegetarianSchedule }: DayCellProps) {
 
   const isCurrentMonth = getMonth(day) === currentMonth;
   const isVegetarianDay = vegetarianDays.includes(lunarDate.lunarDay);
+  const label = [
+    format(day, 'd MMMM yyyy'),
+    `lunar day ${lunarDate.lunarDay}`,
+    isVegetarianDay ? 'vegetarian day' : null,
+  ]
+    .filter(Boolean)
+    .join(', ');
   return (
     <div className="flex justify-center">
       <div
+        aria-label={label}
         className={classNames(
           'flex flex-col w-[2em] h-[2em]',
           isToday(day) && 'bg-(--foreground) rounded-full font-bold',
