@@ -167,10 +167,10 @@ function DayCell({ day, currentMonth, vegetarianSchedule }: DayCellProps) {
         aria-label={label}
         className={classNames(
           'relative flex flex-col justify-center items-center w-[2.2em] h-[2.2em]',
-          isToday(day) && 'bg-(--foreground) rounded-full font-bold',
-          isToday(day) && !isVegetarianDay && 'text-(--background)',
+          isToday(day) && !isVegetarianDay && 'bg-(--foreground) rounded-full font-bold text-(--background)',
+          isToday(day) && isVegetarianDay && 'bg-(--vegetarian) rounded-full font-bold text-(--background)',
           !isCurrentMonth && 'opacity-[0.5]',
-          isVegetarianDay && 'text-[#a1b182] font-bold',
+          isVegetarianDay && !isToday(day) && 'text-(--vegetarian) font-bold',
         )}
       >
         {isVegetarianDay && <span aria-hidden="true" className="absolute top-[0.3em] text-[0.3em] leading-none">•</span>}
