@@ -1,8 +1,12 @@
 import * as Sentry from '@sentry/react';
 import classNames from 'classnames';
 import { ComponentProps, useState } from 'react';
+import useSWR from 'swr';
 
 import logo from '@/assets/logo.svg';
+import { resolveTranslations } from '@/data/i18n';
+import { resolveLocale } from '@/data/locale';
+import { resolveSettings } from '@/data/settings';
 import { Calendar } from '@/pages/Calendar';
 import { Settings } from '@/pages/Settings';
 
@@ -12,12 +16,18 @@ const CHUNK_RELOAD_KEY = 'chunk-reload-attempted';
 
 export function App() {
   const [page, setPage] = useState<'calendar' | 'settings'>('calendar');
+  const { data: settings } = useSWR('settings', resolveSettings);
+  const { data: locale } = useSWR(
+    settings != null ? ['locale', settings.locale] : null,
+    ([, override]) => resolveLocale(override),
+  );
+  const t = resolveTranslations(locale?.tag ?? 'en-US');
 
   return (
     <>
       <main className="p-[2vh]">
         <Sentry.ErrorBoundary
-          fallback={<p className="text-center">Error! 😞</p>}
+          fallback={<p className="text-center">{t.error}</p>}
           onError={(error) => {
             if (error instanceof TypeError && /importing a module script failed|load failed/i.test(error.message)) {
               if (!sessionStorage.getItem(CHUNK_RELOAD_KEY)) {
@@ -32,17 +42,17 @@ export function App() {
         </Sentry.ErrorBoundary>
       </main>
       <aside className="fixed left-0 bottom-0 w-dvw">
-        <nav aria-label="Main navigation" className="flex">
+        <nav aria-label={t.nav.ariaLabel} className="flex">
           <Tab active={page === 'calendar'} onClick={() => setPage('calendar')}>
-            Calendar
+            {t.nav.calendar}
           </Tab>
           <Tab active={page === 'settings'} onClick={() => setPage('settings')}>
-            Settings
+            {t.nav.settings}
           </Tab>
         </nav>
       </aside>
       <footer className="flex flex-col items-center mb-[100px]">
-        <img alt="Logo" src={logo} className="h-[70px] m-3" />
+        <img alt={t.logoAlt} src={logo} className="h-[70px] m-3" />
         <p className="text-xs">
           <a href="https://github.com/anhtin/bodhi-calendar">Bodhi Calendar</a>{' '}
           version {version}

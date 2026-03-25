@@ -1,24 +1,37 @@
 import { Locale } from 'date-fns';
 import { enUS } from 'date-fns/locale/en-US';
 
-export async function resolveLocale(): Promise<Locale> {
-  const userLocaleNames = navigator.languages;
+export type LocaleTag = 'en-US' | 'nb' | 'vi';
 
-  for (const localeName of userLocaleNames) {
+export type AppLocale = {
+  dateFnsLocale: Locale;
+  tag: LocaleTag;
+};
+
+export const LOCALE_NAMES: Record<LocaleTag, string> = {
+  'en-US': 'English',
+  'nb': 'Norsk bokmål',
+  'vi': 'Tiếng Việt',
+};
+
+export async function resolveLocale(override: LocaleTag | null = null): Promise<AppLocale> {
+  const localeNames = override != null ? [override, ...navigator.languages] : [...navigator.languages];
+
+  for (const localeName of localeNames) {
     try {
       switch (localeName) {
         case 'en-US':
-          return enUS;
+          return { dateFnsLocale: enUS, tag: 'en-US' };
         case 'nb-NO':
         case 'nb':
-          return (await import('date-fns/locale/nb')).nb;
+          return { dateFnsLocale: (await import('date-fns/locale/nb')).nb, tag: 'nb' };
         case 'vi':
-          return (await import('date-fns/locale/vi')).vi;
+          return { dateFnsLocale: (await import('date-fns/locale/vi')).vi, tag: 'vi' };
       }
     } catch {
       continue;
     }
   }
 
-  return enUS;
+  return { dateFnsLocale: enUS, tag: 'en-US' };
 }

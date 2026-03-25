@@ -12,11 +12,12 @@ import { useState } from 'react';
 import useSWR from 'swr';
 
 import { Button } from '@/components/Button';
-import { resolveLocale } from '@/data/locale';
+import { resolveTranslations, Translations } from '@/data/i18n';
+import { AppLocale, resolveLocale } from '@/data/locale';
 import { resolveSettings } from '@/data/settings';
 import {
-  VegetarianSchedule,
-  resolveVegetarianSchedule,
+  VegetarianPractice,
+  resolveVegetarianPractice,
 } from '@/data/vegetarian';
 
 import { is30DayLunarMonth } from './helpers/is30DayLunarMonth';
@@ -31,23 +32,27 @@ export function Calendar() {
     'settings',
     resolveSettings,
   );
-  const { data: locale, error: localeError } = useSWR('locale', resolveLocale);
+  const { data: locale, error: localeError } = useSWR(
+    settings != null ? ['locale', settings.locale] : null,
+    ([, override]) => resolveLocale(override),
+  );
 
   if (settingsError) throw settingsError;
   if (localeError) throw localeError;
 
   if (settings == null || locale == null) {
-    return <p className="text-center">Loading...</p>;
+    return <p className="text-center">{resolveTranslations('en-US').loading}</p>;
   }
 
+  const t = resolveTranslations(locale.tag);
   const year = getYear(cursor);
   const month = getMonth(cursor);
-  const monthName = resolveMonthName(month, locale);
-  const weekDayNames = resolveWeekDayNames(locale);
-  const weeks = resolveWeeksInMonthView(month, year, locale);
+  const monthName = resolveMonthName(month, locale.dateFnsLocale);
+  const weekDayNames = resolveWeekDayNames(locale.dateFnsLocale);
+  const weeks = resolveWeeksInMonthView(month, year, locale.dateFnsLocale);
 
-  const vegetarianSchedule = resolveVegetarianSchedule(
-    settings.vegetarian.scheduleId,
+  const vegetarianPractice = resolveVegetarianPractice(
+    settings.vegetarian.practiceId,
   );
 
   return (
@@ -55,6 +60,7 @@ export function Calendar() {
       <Header
         year={year}
         monthName={monthName}
+        t={t.calendar}
         onPreviousMonth={() => setCursor(addMonths(cursor, -1))}
         onNextMonth={() => setCursor(addMonths(cursor, 1))}
       />
@@ -62,7 +68,9 @@ export function Calendar() {
         weekDayNames={weekDayNames}
         weeks={weeks}
         currentMonth={month}
-        vegetarianSchedule={vegetarianSchedule}
+        vegetarianPractice={vegetarianPractice}
+        locale={locale}
+        t={t.calendar}
       />
     </div>
   );
@@ -71,6 +79,7 @@ export function Calendar() {
 type HeaderProps = {
   year: number;
   monthName: string;
+  t: Translations['calendar'];
   onPreviousMonth: () => void;
   onNextMonth: () => void;
 };
@@ -78,19 +87,20 @@ type HeaderProps = {
 function Header({
   year,
   monthName,
+  t,
   onPreviousMonth,
   onNextMonth,
 }: HeaderProps) {
   return (
     <header className="flex justify-between items-center">
-      <Button aria-label="Previous month" className="text-[0.75em]" onClick={onPreviousMonth}>
+      <Button aria-label={t.previousMonth} className="text-[0.75em]" onClick={onPreviousMonth}>
         {'<'}
       </Button>
       <div className="flex flex-col">
         <h1>{year}</h1>
         <h2 className="font-bold text-[1.5em]">{monthName}</h2>
       </div>
-      <Button aria-label="Next month" className="text-[0.75em]" onClick={onNextMonth}>
+      <Button aria-label={t.nextMonth} className="text-[0.75em]" onClick={onNextMonth}>
         {'>'}
       </Button>
     </header>
@@ -101,17 +111,21 @@ type BodyProps = {
   weekDayNames: string[];
   weeks: Date[][];
   currentMonth: number;
-  vegetarianSchedule: VegetarianSchedule;
+  vegetarianPractice: VegetarianPractice;
+  locale: AppLocale;
+  t: Translations['calendar'];
 };
 
 function Body({
   weekDayNames,
   weeks,
   currentMonth,
-  vegetarianSchedule,
+  vegetarianPractice,
+  locale,
+  t,
 }: BodyProps) {
   return (
-    <table aria-label="Calendar" className="w-full table-fixed">
+    <table aria-label={t.tableAriaLabel} className="w-full table-fixed">
       <thead className="border-b">
         <tr>
           {weekDayNames.map((x, i) => (
@@ -129,7 +143,9 @@ function Body({
                 <DayCell
                   day={day}
                   currentMonth={currentMonth}
-                  vegetarianSchedule={vegetarianSchedule}
+                  vegetarianPractice={vegetarianPractice}
+                  locale={locale}
+                  t={t}
                 />
               </td>
             ))}
@@ -143,21 +159,23 @@ function Body({
 type DayCellProps = {
   day: Date;
   currentMonth: number;
-  vegetarianSchedule: VegetarianSchedule;
+  vegetarianPractice: VegetarianPractice;
+  locale: AppLocale;
+  t: Translations['calendar'];
 };
 
-function DayCell({ day, currentMonth, vegetarianSchedule }: DayCellProps) {
+function DayCell({ day, currentMonth, vegetarianPractice, locale, t }: DayCellProps) {
   const lunarDate = resolveLunarDate(day);
   const vegetarianDays = is30DayLunarMonth(lunarDate)
-    ? vegetarianSchedule.for30DayMonths
-    : vegetarianSchedule.for29DayMonths;
+    ? vegetarianPractice.for30DayMonths
+    : vegetarianPractice.for29DayMonths;
 
   const isCurrentMonth = getMonth(day) === currentMonth;
   const isVegetarianDay = vegetarianDays.includes(lunarDate.lunarDay);
   const label = [
-    format(day, 'd MMMM yyyy'),
-    `lunar day ${lunarDate.lunarDay}`,
-    isVegetarianDay ? 'vegetarian day' : null,
+    format(day, t.dateFormat, { locale: locale.dateFnsLocale }),
+    t.lunarDay(lunarDate.lunarDay),
+    isVegetarianDay ? t.vegetarianDay : null,
   ]
     .filter(Boolean)
     .join(', ');
