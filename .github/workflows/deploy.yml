@@ -34,6 +34,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Compute tag
+        id: tag
+        run: bash scripts/compute-tag.sh
+
       - name: Lint
         run: pnpm lint
 
@@ -41,6 +45,7 @@ jobs:
         run: pnpm exec tsc -b && pnpm exec vite build
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          VITE_APP_VERSION: ${{ steps.tag.outputs.value }}
 
       - name: Test
         run: pnpm test
@@ -55,4 +60,6 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Tag the deploy
-        run: bash scripts/tag-release.sh
+        run: |
+          git tag "${{ steps.tag.outputs.value }}"
+          git push origin "${{ steps.tag.outputs.value }}"

@@ -13,7 +13,8 @@ else
 fi
 
 TAG="${DATE}.${X}"
-git tag "$TAG"
-git push origin "$TAG"
+echo "$TAG"
 
-echo "Created and pushed tag: $TAG"
+if [ -n "${GITHUB_OUTPUT:-}" ]; then
+  echo "value=$TAG" >> "$GITHUB_OUTPUT"
+fi
