@@ -11,8 +11,7 @@
     "lint": "eslint ./src",
     "format": "prettier --write src/**/*.{ts,tsx}",
     "build:local": "tsc -b && vite build --mode local-build",
-    "preview": "vite preview",
-    "deploy": "scripts/tag-release.sh"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@sentry/react": "^10.44.0",
