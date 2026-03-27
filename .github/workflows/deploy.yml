@@ -36,7 +36,11 @@ jobs:
 
       - name: Compute tag
         id: tag
-        run: bash scripts/compute-tag.sh
+        run: |
+          TAG=$(bash scripts/compute-tag.sh)
+          echo "value=$TAG" >> "$GITHUB_OUTPUT"
+          echo "### Deployment info" >> "$GITHUB_STEP_SUMMARY"
+          echo "\`$TAG\`" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Lint
         run: pnpm lint

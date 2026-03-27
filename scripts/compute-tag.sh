@@ -12,9 +12,4 @@ else
   X=$(( $(echo "$EXISTING" | cut -d. -f2) + 1 ))
 fi
 
-TAG="${DATE}.${X}"
-echo "$TAG"
-
-if [ -n "${GITHUB_OUTPUT:-}" ]; then
-  echo "value=$TAG" >> "$GITHUB_OUTPUT"
-fi
+echo "${DATE}.${X}"
