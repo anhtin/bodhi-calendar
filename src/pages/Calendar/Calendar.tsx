@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import {
   addMonths,
   format,
@@ -12,6 +11,7 @@ import { useState } from 'react';
 import useSWR from 'swr';
 
 import { Button } from '@/components/Button';
+import { DayCellView } from '@/components/DayCellView';
 import { resolveTranslations, Translations } from '@/data/i18n';
 import { AppLocale, resolveLocale } from '@/data/locale';
 import { resolveSettings } from '@/data/settings';
@@ -170,8 +170,9 @@ function DayCell({ day, currentMonth, vegetarianPractice, locale, t }: DayCellPr
     ? vegetarianPractice.for30DayMonths
     : vegetarianPractice.for29DayMonths;
 
-  const isCurrentMonth = getMonth(day) === currentMonth;
+  const isTodayDay = isToday(day);
   const isVegetarianDay = vegetarianDays.includes(lunarDate.lunarDay);
+
   const label = [
     format(day, t.dateFormat, { locale: locale.dateFnsLocale }),
     t.lunarDay(lunarDate.lunarDay),
@@ -179,22 +180,15 @@ function DayCell({ day, currentMonth, vegetarianPractice, locale, t }: DayCellPr
   ]
     .filter(Boolean)
     .join(', ');
+
   return (
-    <div className="flex justify-center">
-      <div
-        aria-label={label}
-        className={classNames(
-          'relative flex flex-col justify-center items-center w-[2.2em] h-[2.2em]',
-          isToday(day) && !isVegetarianDay && 'bg-(--foreground) rounded-full font-bold text-(--background)',
-          isToday(day) && isVegetarianDay && 'bg-(--vegetarian) rounded-full font-bold text-(--background)',
-          !isCurrentMonth && 'opacity-[0.5]',
-          isVegetarianDay && !isToday(day) && 'text-(--vegetarian) font-bold',
-        )}
-      >
-        {isVegetarianDay && <span aria-hidden="true" className="absolute top-[0.3em] text-[0.3em] leading-none">•</span>}
-        <span className="text-[0.5em] leading-none">{lunarDate.lunarDay}</span>
-        <span className="leading-none">{getDate(day)}</span>
-      </div>
-    </div>
+    <DayCellView
+      lunarDay={lunarDate.lunarDay}
+      solarDay={getDate(day)}
+      isToday={isTodayDay}
+      isVegetarian={isVegetarianDay}
+      faded={getMonth(day) !== currentMonth}
+      aria-label={label}
+    />
   );
 }
